@@ -1042,3 +1042,64 @@ html{color-scheme:light only}
 .timeline-live .results-timeline__checkpoint-jade-ripple,
 .timeline-live .results-timeline__checkpoint-jade-whisper,
 .timeline-live .results-timeline__checkpoint-kindle-crest{opacity:.15!important}
+
+/* --- Responsive hardening for iPad/mobile Shopify section composition --- */
+@media (max-width: 1024px){
+  .hero__panel-bloom{padding:14px 24px}
+  .hero__panel-harbor{gap:18px}
+  .hero__panel-jade{padding:132px 24px 78px}
+  .hero__panel-velvet{grid-template-columns:1fr;gap:28px}
+
+  .trust-strip__signal-bloom-flare,
+  .trust-strip__signal-bloom-nova,
+  .water-science__fact-crest-oasis,
+  .product-showcase__detail-ember-flare,
+  .founder-story__moment-harbor-ripple,
+  .results-timeline__checkpoint-ivory-ripple{padding-left:24px;padding-right:24px}
+
+  .site-footer__detail-lumen-crest{margin:0 24px 44px;padding:64px 28px}
+  .site-footer__detail-lumen-ivory{font-size:36px}
+  .site-footer__detail-kindle-thrive{max-width:unset;margin:0 24px 48px;padding:36px;gap:22px}
+}
+
+@media (max-width: 768px){
+  .hero__panel-bloom{padding:10px 14px}
+  .hero__panel-harbor{display:none}
+  .hero__panel-jade{padding:104px 16px 56px}
+  .hero-main-heading{font-size:42px;line-height:1.1}
+  .hero-support-text{font-size:17px;line-height:1.65}
+  .hero-action-row{flex-direction:column;align-items:stretch}
+  .hero-metric-row{grid-template-columns:1fr;gap:14px}
+
+  .trust-strip__signal-bloom-flare,
+  .trust-strip__signal-bloom-nova,
+  .water-science__fact-crest-oasis,
+  .product-showcase__detail-ember-flare,
+  .founder-story__moment-harbor-ripple,
+  .results-timeline__checkpoint-ivory-ripple{padding-left:16px;padding-right:16px}
+
+  .trust-strip__signal-bloom-glow{gap:10px;overflow:auto;white-space:nowrap;padding-bottom:2px}
+  .trust-strip__signal-bloom-harbor{flex-shrink:0}
+  .trust-strip__signal-bloom-oasis{grid-template-columns:1fr 1fr;gap:12px}
+
+  .faq-section__entry-kindle-kindle{max-width:100%;grid-template-columns:1fr;gap:20px}
+  .water-science__fact-crest-quartz{text-align:left;padding:0}
+  .faq-section__entry-kindle-lumen{margin:0 0 12px}
+  .faq-section__entry-kindle-meadow{font-size:42px;line-height:1.1}
+  .faq-section__entry-kindle-pulse{padding:18px 16px;font-size:16px}
+  .faq-section__entry-kindle-solace{padding:0 16px 18px;font-size:15.5px;line-height:1.7}
+
+  .site-footer__detail-kindle-thrive{margin:0 16px 34px;padding:24px;display:block}
+  .site-footer__detail-kindle-whisper{grid-template-columns:1fr}
+
+  .site-footer__detail-lumen-crest{margin:0 16px 34px;padding:40px 20px}
+  .site-footer__detail-lumen-ivory{font-size:34px;line-height:1.2}
+  .site-footer__detail-lumen-jade{font-size:16px}
+  .site-footer__detail-lumen-kindle{flex-direction:column;align-items:stretch}
+  .site-footer__detail-lumen-lumen{width:100%;justify-content:center}
+
+  .site-footer__detail-lumen-meadow{padding:40px 16px 22px}
+  .site-footer__detail-lumen-nova{flex-direction:column;gap:30px}
+  .site-footer__detail-lumen-solace{gap:24px;flex-wrap:wrap}
+  .site-footer__detail-lumen-velvet{flex-direction:column;align-items:flex-start;gap:8px}
+}
