@@ -1,0 +1,37 @@
+{% style %}#shopify-section-{{ section.id }}{background:{{ section.settings.bg }};color:{{ section.settings.text }};padding-top:{{ section.settings.padding_top }}px;padding-bottom:{{ section.settings.padding_bottom }}px}{% endstyle %}
+            <div class="reveal-scale hero__panel-bloom-ember">
+            <section class="site-footer__detail-kindle-thrive">
+                <svg width="110" height="110" viewBox="0 0 110 110" fill="none" class="hero__panel-ember">
+                    <path d="M55 8l34 14v24c0 24-34 42-34 42S21 70 21 46V22L55 8z" fill="var(--sage)" opacity=".1" stroke="var(--sage)" stroke-width="2.5"></path>
+                    <path d="M44 55l8 8 16-16" stroke="var(--sage)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <text x="55" y="90" text-anchor="middle" fill="var(--sage)" font-size="9" font-weight="800" font-family="var(--fb)" opacity=".6">GUARANTEED</text>
+                </svg>
+                <div>
+                    <h3 class="site-footer__detail-kindle-uplift">Our Guarantee Is Built Around Your Biology</h3>
+                    <p class="site-footer__detail-kindle-velvet">Hair growth cycles take 8–12 weeks. We designed our guarantee around that science.</p>
+                    <div class="site-footer__detail-kindle-whisper">
+                        <div class="card site-footer__detail-kindle-xenial">
+                            <div class="site-footer__detail-kindle-yonder">2.0 Handheld</div>
+                            <div class="site-footer__detail-kindle-zenith">60 Days</div>
+                        </div>
+                        <div class="card site-footer__detail-kindle-xenial">
+                            <div class="site-footer__detail-lumen-aurora">5.0 Stationary</div>
+                            <div class="site-footer__detail-kindle-zenith">90 Days</div>
+                        </div>
+                    </div>
+                    <p class="site-footer__detail-lumen-bloom">Full refund. No restocking fee. We cover return shipping.</p>
+                </div>
+            </section>
+            </div>
+{% schema %}
+{
+  "name":"SE Guarantee",
+  "settings":[
+    {"type":"color","id":"bg","label":"Background color","default":"#ffffff"},
+    {"type":"color","id":"text","label":"Text color","default":"#1f1d1a"},
+    {"type":"range","id":"padding_top","label":"Padding top","min":0,"max":120,"step":4,"unit":"px","default":0},
+    {"type":"range","id":"padding_bottom","label":"Padding bottom","min":0,"max":120,"step":4,"unit":"px","default":0}
+  ],
+  "presets":[{"name":"SE Guarantee"}]
+}
+{% endschema %}
