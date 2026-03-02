@@ -17,7 +17,19 @@
             <div class="hero__panel-harbor"><a href="#science" class="nav-link">{{ section.settings.secondary_label }}</a><a href="#products" class="nav-link">Our Products</a><a href="#results" class="nav-link">Real Results</a><a href="#faq" class="nav-link">Common Questions</a>
                 <button class="btn btn-rose hero__panel-ivory">{{ section.settings.primary_label }}</button>
             </div>
+            <button class="ham" aria-label="Open menu" type="button">
+                <span></span><span></span><span></span>
+            </button>
         </nav>
+        <div class="mob-overlay"></div>
+        <aside class="mob-menu" aria-label="Mobile navigation">
+            <button class="mob-close" aria-label="Close menu" type="button">×</button>
+            <a href="#science">{{ section.settings.secondary_label }}</a>
+            <a href="#products">Our Products</a>
+            <a href="#results">Real Results</a>
+            <a href="#faq">Common Questions</a>
+            <a href="#products" class="btn btn-rose" style="margin-top:20px;justify-content:center">{{ section.settings.primary_label }}</a>
+        </aside>
         <section class="dark-section hero__panel-jade">
             <div class="hero__panel-kindle"></div>
             <div class="hero__panel-lumen"></div>
