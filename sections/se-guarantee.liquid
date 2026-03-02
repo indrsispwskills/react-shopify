@@ -18,12 +18,23 @@
       <h3 class="site-footer__detail-kindle-uplift">{{ section.settings.heading }}</h3>
       <p class="site-footer__detail-kindle-velvet">{{ section.settings.description }}</p>
       <div class="site-footer__detail-kindle-whisper">
-        {% for block in section.blocks %}
-          <div class="card site-footer__detail-kindle-xenial" {{ block.shopify_attributes }}>
-            <div class="{% if forloop.index == 2 %}site-footer__detail-lumen-aurora{% else %}site-footer__detail-kindle-yonder{% endif %}">{{ block.settings.label }}</div>
-            <div class="site-footer__detail-kindle-zenith">{{ block.settings.value }}</div>
+        {% if section.blocks.size > 0 %}
+          {% for block in section.blocks %}
+            <div class="card site-footer__detail-kindle-xenial" {{ block.shopify_attributes }}>
+              <div class="{% if forloop.index == 2 %}site-footer__detail-lumen-aurora{% else %}site-footer__detail-kindle-yonder{% endif %}">{{ block.settings.label }}</div>
+              <div class="site-footer__detail-kindle-zenith">{{ block.settings.value }}</div>
+            </div>
+          {% endfor %}
+        {% else %}
+          <div class="card site-footer__detail-kindle-xenial">
+            <div class="site-footer__detail-kindle-yonder">2.0 Handheld</div>
+            <div class="site-footer__detail-kindle-zenith">60 Days</div>
           </div>
-        {% endfor %}
+          <div class="card site-footer__detail-kindle-xenial">
+            <div class="site-footer__detail-lumen-aurora">5.0 Stationary</div>
+            <div class="site-footer__detail-kindle-zenith">90 Days</div>
+          </div>
+        {% endif %}
       </div>
       <p class="site-footer__detail-lumen-bloom">{{ section.settings.bottom_note }}</p>
     </div>
