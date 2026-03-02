@@ -2576,6 +2576,16 @@ html{color-scheme:light only}
 
   function initRevealEffects() {
     const targets = root.querySelectorAll('.reveal-up,.reveal-left,.reveal-right,.reveal-scale,.content-layout,.tl-dot,.tl-fill,.tl-vline-fill');
+    const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (reduceMotion) {
+      targets.forEach((el) => el.classList.add('is-visible'));
+      return;
+    }
+
+    // Reset accidentally pre-rendered visibility classes so reveal animations can run consistently.
+    targets.forEach((el) => el.classList.remove('is-visible'));
+
     if (!('IntersectionObserver' in window)) {
       targets.forEach((el) => el.classList.add('is-visible'));
       return;
