@@ -1,0 +1,32 @@
+{% style %}#shopify-section-{{ section.id }}{background:{{ section.settings.bg }};color:{{ section.settings.text }};padding-top:{{ section.settings.padding_top }}px;padding-bottom:{{ section.settings.padding_bottom }}px}{% endstyle %}
+            <section class="trust-strip__signal-bloom-flare">
+                <div class="trust-strip__signal-bloom-glow">
+                    <div class="trust-strip__signal-bloom-harbor"><span class="trust-strip__signal-bloom-ivory">🩺</span>Dermatologist Recommended</div>
+                    <div class="trust-strip__signal-bloom-harbor"><span class="trust-strip__signal-bloom-jade">⏱</span>Installs in 3 Minutes</div>
+                    <div class="trust-strip__signal-bloom-harbor"><span class="trust-strip__signal-bloom-kindle">✓</span>NSF/ANSI Certified</div>
+                    <div class="trust-strip__signal-bloom-harbor"><span class="trust-strip__signal-bloom-lumen">📦</span>Free Shipping &amp; Returns</div>
+                    <div class="trust-strip__signal-bloom-harbor"><span class="trust-strip__signal-bloom-meadow">🇺🇸</span>Made in the USA</div>
+                </div>
+            </section>
+        </div>
+        <div class="reveal-up is-visible hero__panel-bloom-ember">
+            <section class="trust-strip__signal-bloom-nova">
+                <div class="trust-strip__signal-bloom-oasis">
+                    <div class="trust-strip__signal-bloom-pulse"><span class="hero__panel-aurora-oasis">🚿</span><span class="trust-strip__signal-bloom-quartz">Lifestyle — Woman 50+ enjoying shower</span><span class="trust-strip__signal-bloom-ripple">Upload image here</span></div>
+                    <div class="trust-strip__signal-bloom-solace"><span class="hero__panel-aurora-oasis">✨</span><span class="trust-strip__signal-bloom-thrive">Lifestyle — Healthy glowing skin</span><span class="trust-strip__signal-bloom-uplift">Upload image here</span></div>
+                    <div class="trust-strip__signal-bloom-velvet"><span class="hero__panel-aurora-oasis">💇&zwj;♀️</span><span class="trust-strip__signal-bloom-whisper">Lifestyle — Full healthy hair</span><span class="trust-strip__signal-bloom-xenial">Upload image here</span></div>
+                    <div class="trust-strip__signal-bloom-pulse"><span class="hero__panel-aurora-oasis">😊</span><span class="trust-strip__signal-bloom-quartz">Lifestyle — Happy woman in bathroom</span><span class="trust-strip__signal-bloom-ripple">Upload image here</span></div>
+                </div>
+            </section>
+{% schema %}
+{
+  "name":"SE Trust Strip",
+  "settings":[
+    {"type":"color","id":"bg","label":"Background color","default":"#ffffff"},
+    {"type":"color","id":"text","label":"Text color","default":"#1f1d1a"},
+    {"type":"range","id":"padding_top","label":"Padding top","min":0,"max":120,"step":4,"unit":"px","default":0},
+    {"type":"range","id":"padding_bottom","label":"Padding bottom","min":0,"max":120,"step":4,"unit":"px","default":0}
+  ],
+  "presets":[{"name":"SE Trust Strip"}]
+}
+{% endschema %}
