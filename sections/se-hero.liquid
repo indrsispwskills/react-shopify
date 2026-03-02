@@ -1,3 +1,7 @@
+{% if section.settings.custom_html != blank %}
+  {{ section.settings.custom_html }}
+{% else %}
+{% if section.settings.custom_svg != blank %}<div class="se-custom-svg">{{ section.settings.custom_svg }}</div>{% endif %}
         <nav class="hero__panel-bloom">
             <div class="hero__panel-crest"></div>
             <div>
@@ -219,6 +223,7 @@
                 </div>
             </div>
         </section>
+{% endif %}
 {% schema %}
 {
   "name": "SE Hero",
@@ -229,6 +234,8 @@
     {"type":"text","id":"secondary_label","label":"Secondary button label","default":"How It Works"},
     {"type":"image_picker","id":"hero_image","label":"Hero image"},
     {"type":"liquid","id":"custom_shower_svg","label":"Custom SVG/HTML (overrides default shower SVG)"}
+    ,{"type":"liquid","id":"custom_html","label":"Custom section HTML (advanced)"}
+    ,{"type":"liquid","id":"custom_svg","label":"Custom SVG/HTML snippet (advanced)"}
   ],
   "presets":[{"name":"SE Hero"}]
 }
