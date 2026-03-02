@@ -12,6 +12,13 @@
         <div class="trust-strip__signal-bloom-harbor" {{ block.shopify_attributes }}><span class="{% case badge_index %}{% when 1 %}trust-strip__signal-bloom-ivory{% when 2 %}trust-strip__signal-bloom-jade{% when 3 %}trust-strip__signal-bloom-kindle{% when 4 %}trust-strip__signal-bloom-lumen{% else %}trust-strip__signal-bloom-meadow{% endcase %}">{{ block.settings.icon }}</span>{{ block.settings.text }}</div>
       {% endif %}
     {% endfor %}
+    {% if badge_index == 0 %}
+      <div class="trust-strip__signal-bloom-harbor"><span class="trust-strip__signal-bloom-ivory">🩺</span>Dermatologist Recommended</div>
+      <div class="trust-strip__signal-bloom-harbor"><span class="trust-strip__signal-bloom-jade">⏱</span>Installs in 3 Minutes</div>
+      <div class="trust-strip__signal-bloom-harbor"><span class="trust-strip__signal-bloom-kindle">✓</span>NSF/ANSI Certified</div>
+      <div class="trust-strip__signal-bloom-harbor"><span class="trust-strip__signal-bloom-lumen">📦</span>Free Shipping &amp; Returns</div>
+      <div class="trust-strip__signal-bloom-harbor"><span class="trust-strip__signal-bloom-meadow">🇺🇸</span>Made in the USA</div>
+    {% endif %}
   </div>
 </section>
 
@@ -29,6 +36,12 @@
           </div>
         {% endif %}
       {% endfor %}
+      {% if lifestyle_index == 0 %}
+        <div class="trust-strip__signal-bloom-pulse"><span class="hero__panel-aurora-oasis">🚿</span><span class="trust-strip__signal-bloom-quartz">Lifestyle — Woman 50+ enjoying shower</span><span class="trust-strip__signal-bloom-ripple">Upload image here</span></div>
+        <div class="trust-strip__signal-bloom-solace"><span class="hero__panel-aurora-oasis">✨</span><span class="trust-strip__signal-bloom-thrive">Lifestyle — Healthy glowing skin</span><span class="trust-strip__signal-bloom-uplift">Upload image here</span></div>
+        <div class="trust-strip__signal-bloom-velvet"><span class="hero__panel-aurora-oasis">💇‍♀️</span><span class="trust-strip__signal-bloom-whisper">Lifestyle — Full healthy hair</span><span class="trust-strip__signal-bloom-xenial">Upload image here</span></div>
+        <div class="trust-strip__signal-bloom-pulse"><span class="hero__panel-aurora-oasis">😊</span><span class="trust-strip__signal-bloom-quartz">Lifestyle — Happy woman in bathroom</span><span class="trust-strip__signal-bloom-ripple">Upload image here</span></div>
+      {% endif %}
     </div>
   </section>
 </div>

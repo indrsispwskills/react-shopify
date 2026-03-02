@@ -416,7 +416,7 @@ html{color-scheme:light only}
 .hero__panel-bloom-drift{font-family: var(--fb);font-size: 14px;color: var(--mut)}
 .hero__panel-bloom-ember{transition-delay: 0s}
 .trust-strip__signal-bloom-flare{padding: 28px 52px;border-bottom: 1px solid var(--bdr);max-width: 1100px;margin: 0px auto}
-.trust-strip__signal-bloom-glow{display: flex;justify-content: center;align-items: center;gap: 40px;flex-wrap: wrap;font-family: var(--fb);font-size: 16.5px;color: var(--mut);font-weight: 500}
+.trust-strip__signal-bloom-glow{display: flex;justify-content: center;align-items: center;gap: 24px;flex-wrap: nowrap;font-family: var(--fb);font-size: 15px;color: var(--mut);font-weight: 500}
 .trust-strip__signal-bloom-harbor{display: flex;align-items: center;gap: 6px}
 .trust-strip__signal-bloom-ivory{font-size: 17px;animation: 3s ease-in-out 0s infinite normal none running floaty}
 .trust-strip__signal-bloom-jade{font-size: 17px;animation: 3.5s ease-in-out 0.3s infinite normal none running floaty}
