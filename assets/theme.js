@@ -6,7 +6,9 @@
 
   function initNav() {
     const nav = root.querySelector('nav');
-    if (!nav) return;
+    if (!nav || nav.dataset.seBound === '1') return;
+    nav.dataset.seBound = '1';
+
     const logoCircles = nav.querySelectorAll('svg circle');
     const logoPath = nav.querySelector('svg path');
 
@@ -28,7 +30,8 @@
     const menu = root.querySelector('.mob-menu');
     const overlay = root.querySelector('.mob-overlay');
     const closeBtn = root.querySelector('.mob-close');
-    if (!menuBtn || !menu || !overlay) return;
+    if (!menuBtn || !menu || !overlay || menuBtn.dataset.seMenuBound === '1') return;
+    menuBtn.dataset.seMenuBound = '1';
 
     const closeMenu = () => {
       menu.classList.remove('open');
@@ -44,19 +47,26 @@
     on(menuBtn, 'click', openMenu);
     on(closeBtn, 'click', closeMenu);
     on(overlay, 'click', closeMenu);
-    root.querySelectorAll('.mob-menu a').forEach((a) => on(a, 'click', closeMenu));
+    root.querySelectorAll('.mob-menu a').forEach((a) => {
+      if (a.dataset.seMenuBound === '1') return;
+      a.dataset.seMenuBound = '1';
+      on(a, 'click', closeMenu);
+    });
   }
 
-  function initFaq() {
-    const faqButtons = Array.from(root.querySelectorAll('#faq button'));
+  function initFaq(scope = root) {
+    const faqButtons = Array.from(scope.querySelectorAll('#faq button, .faq-section__entry-kindle-pulse'));
     faqButtons.forEach((btn) => {
+      if (btn.dataset.seFaqBound === '1') return;
+      btn.dataset.seFaqBound = '1';
+
       on(btn, 'click', () => {
         const answerWrap = btn.nextElementSibling;
         if (!answerWrap) return;
         const plus = btn.querySelector('span:last-child');
         const isOpen = answerWrap.classList.contains('faq-item-open');
 
-        faqButtons.forEach((b) => {
+        (root.querySelectorAll('#faq button, .faq-section__entry-kindle-pulse')).forEach((b) => {
           const aw = b.nextElementSibling;
           const p = b.querySelector('span:last-child');
           if (aw) aw.classList.remove('faq-item-open');
@@ -73,7 +83,8 @@
 
   function initBackToTop() {
     const backToTop = root.querySelector('button[aria-label="Back to top"]');
-    if (!backToTop) return;
+    if (!backToTop || backToTop.dataset.seTopBound === '1') return;
+    backToTop.dataset.seTopBound = '1';
 
     backToTop.classList.add('back-to-top');
     on(backToTop, 'click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
@@ -85,7 +96,8 @@
 
   function initMobileCta() {
     const mobileCta = root.querySelector('.mob-cta');
-    if (!mobileCta) return;
+    if (!mobileCta || mobileCta.dataset.seCtaBound === '1') return;
+    mobileCta.dataset.seCtaBound = '1';
 
     const update = () => {
       const show = window.matchMedia('(max-width: 768px)').matches && window.scrollY > 500;
@@ -103,8 +115,11 @@
     });
   }
 
-  function initSmoothScroll() {
-    root.querySelectorAll('a[href^="#"]').forEach((a) => {
+  function initSmoothScroll(scope = root) {
+    scope.querySelectorAll('a[href^="#"]').forEach((a) => {
+      if (a.dataset.seScrollBound === '1') return;
+      a.dataset.seScrollBound = '1';
+
       on(a, 'click', (e) => {
         const id = a.getAttribute('href');
         if (!id || id === '#') return;
@@ -116,12 +131,12 @@
     });
   }
 
-  function patchConvertedContent() {
-    root.querySelectorAll('.water-science__fact-drift-harbor,.science-mobile__fact-crest-harbor').forEach((el) => {
+  function patchConvertedContent(scope = root) {
+    scope.querySelectorAll('.water-science__fact-drift-harbor,.science-mobile__fact-crest-harbor').forEach((el) => {
       el.innerHTML = 'Subtraction,<br>Not Addition.';
     });
 
-    root.querySelectorAll('span').forEach((span) => {
+    scope.querySelectorAll('span').forEach((span) => {
       const txt = (span.textContent || '').trim();
       const needsGradient =
         /Your Shower Undoes It Every Morning\.?/i.test(txt) ||
@@ -137,8 +152,8 @@
     });
   }
 
-  function initRevealEffects() {
-    const targets = root.querySelectorAll('.reveal-up,.reveal-left,.reveal-right,.reveal-scale,.content-layout,.tl-dot,.tl-fill,.tl-vline-fill');
+  function initRevealEffects(scope = root) {
+    const targets = scope.querySelectorAll('.reveal-up,.reveal-left,.reveal-right,.reveal-scale,.content-layout,.tl-dot,.tl-fill,.tl-vline-fill');
     const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     if (reduceMotion) {
@@ -146,7 +161,6 @@
       return;
     }
 
-    // Reset accidentally pre-rendered visibility classes so reveal animations can run consistently.
     targets.forEach((el) => el.classList.remove('is-visible'));
 
     if (!('IntersectionObserver' in window)) {
@@ -166,8 +180,8 @@
     targets.forEach((el) => io.observe(el));
   }
 
-  function initTimeline() {
-    const sections = Array.from(root.querySelectorAll('section')).filter((s) => {
+  function initTimeline(scope = root) {
+    const sections = Array.from(scope.querySelectorAll('section')).filter((s) => {
       const h2 = s.querySelector('h2');
       return h2 && /Your Results Timeline/i.test(h2.textContent || '');
     });
@@ -192,13 +206,18 @@
     sections.forEach((section) => io.observe(section));
   }
 
-  initNav();
-  initMenu();
-  initFaq();
-  initBackToTop();
-  initMobileCta();
-  initSmoothScroll();
-  patchConvertedContent();
-  initRevealEffects();
-  initTimeline();
+  function initAll(scope = root) {
+    initNav();
+    initMenu();
+    initFaq(scope);
+    initBackToTop();
+    initMobileCta();
+    initSmoothScroll(scope);
+    patchConvertedContent(scope);
+    initRevealEffects(scope);
+    initTimeline(scope);
+  }
+
+  initAll(root);
+  on(document, 'shopify:section:load', (event) => initAll(event.target || root));
 })();
