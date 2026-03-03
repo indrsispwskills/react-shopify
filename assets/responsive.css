@@ -4,7 +4,8 @@
 }
 
 @media (max-width: 1024px){
-  .hero__panel-bloom{padding:14px 24px}
+  html,body,#MainContent,.content-for-layout{max-width:100%;overflow-x:hidden}
+  .hero__panel-bloom{padding:14px 24px;left:0;right:0;width:100%;box-sizing:border-box}
   .hero__panel-harbor{gap:18px}
   .hero__panel-jade{padding:132px 24px 78px}
   .hero__panel-velvet{grid-template-columns:1fr;gap:28px}
@@ -22,6 +23,7 @@
 }
 
 @media (max-width:768px){
+  html,body,#MainContent,.content-for-layout{max-width:100%;overflow-x:hidden}
   body{font-size:17px;line-height:1.8;-webkit-text-size-adjust:100%}
   .ham{display:block}
   .mob-cta{display:block}
@@ -80,7 +82,7 @@
     top:0 !important;
     right:0 !important;
     bottom:0 !important;
-    width:300px !important;
+    width:min(300px,86vw) !important;
     z-index:251 !important;
     background:var(--cream,#FAF6F0) !important;
     transform:translateX(100%) !important;
@@ -168,11 +170,8 @@
   .mc2-icon span{font-size:24px}
   .mc2-connector-svg{display:none}
 
-  /* requested mobile one-screen behavior */
-  html,body{height:100dvh;max-height:100dvh;overflow:hidden}
-  #MainContent{height:100dvh;max-height:100dvh;overflow:hidden}
-  .content-for-layout{height:100%;overflow:hidden}
-  section{min-height:auto}
+  img,svg,video{max-width:100%;height:auto}
+  section{max-width:100%}
 
   footer,footer p,footer a{font-size:14px !important}
 }
