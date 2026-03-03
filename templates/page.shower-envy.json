@@ -1,0 +1,19 @@
+{
+  "sections": {
+    "hero": {"type":"se-hero"},
+    "trust": {"type":"se-trust-strip"},
+    "concern": {"type":"se-concern"},
+    "science": {"type":"se-science"},
+    "showcase": {"type":"se-showcase"},
+    "results": {"type":"se-results"},
+    "products": {"type":"se-products"},
+    "installation": {"type":"se-installation"},
+    "founder": {"type":"se-founder"},
+    "timeline": {"type":"se-timeline"},
+    "faq": {"type":"se-faq"},
+    "guarantee": {"type":"se-guarantee"},
+    "cta": {"type":"se-cta"},
+    "footer": {"type":"se-footer"}
+  },
+  "order": ["hero","trust","concern","science","showcase","results","products","installation","founder","timeline","faq","guarantee","cta","footer"]
+}
