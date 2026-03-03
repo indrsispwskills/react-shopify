@@ -1,15 +1,11 @@
 {% style %}#shopify-section-{{ section.id }}{background:{{ section.settings.bg }};color:{{ section.settings.text }};padding-top:{{ section.settings.padding_top }}px;padding-bottom:{{ section.settings.padding_bottom }}px}{% endstyle %}
-{% if section.settings.custom_html != blank %}
-  {{ section.settings.custom_html }}
-{% else %}
-{% if section.settings.custom_svg != blank %}<div class="se-custom-svg">{{ section.settings.custom_svg }}</div>{% endif %}
         <section class="product-showcase__detail-ember-flare">
             <div class="reveal-up hero__panel-bloom-ember is-visible">
                 <div class="concern-section__point-bloom-zenith">
                     <div class="product-showcase__detail-ember-glow">💧</div>
-                    <div class="section-eyebrow product-showcase__detail-ember-harbor">OUR APPROACH</div>
-                    <h2 class="product-showcase__detail-ember-ivory">Subtraction, Not Addition.</h2>
-                    <p class="product-showcase__detail-ember-jade">You don't need another product piled on top. You need to remove what's undoing everything.</p>
+                    <div class="section-eyebrow product-showcase__detail-ember-harbor">{{ section.settings.eyebrow }}</div>
+                    <h2 class="product-showcase__detail-ember-ivory">{{ section.settings.main_title }}</h2>
+                    <p class="product-showcase__detail-ember-jade">{{ section.settings.main_description }}</p>
                 </div>
             </div>
             <div class="reveal-up hero__panel-bloom-ember">
@@ -46,8 +42,8 @@
                             <text x="146" y="34" text-anchor="middle" fill="#fff" font-size="13" font-weight="800">E</text>
                         </svg>
                     </div>
-                    <h3 class="product-showcase__detail-flare-crest">The Vitamin Infusion That Sets Us Apart</h3>
-                    <p class="product-showcase__detail-flare-drift">No other showerhead delivers all three.</p>
+                    <h3 class="product-showcase__detail-flare-crest">{{ section.settings.vitamin_title }}</h3>
+                    <p class="product-showcase__detail-flare-drift">{{ section.settings.vitamin_description }}</p>
                     <div class="product-showcase__detail-flare-ember">
                         <div class="card product-showcase__detail-flare-flare">
                             <div class="product-showcase__detail-flare-glow">
@@ -84,7 +80,6 @@
             </div>
         </section>
 
-{% endif %}
 {% schema %}
 {
   "name":"SE Showcase",
@@ -93,10 +88,13 @@
     {"type":"color","id":"text","label":"Text color","default":"#1f1d1a"},
     {"type":"range","id":"padding_top","label":"Padding top","min":0,"max":120,"step":4,"unit":"px","default":0},
     {"type":"range","id":"padding_bottom","label":"Padding bottom","min":0,"max":120,"step":4,"unit":"px","default":0},
+    {"type":"text","id":"eyebrow","label":"Eyebrow","default":"OUR APPROACH"},
+    {"type":"text","id":"main_title","label":"Main title","default":"Subtraction, Not Addition."},
+    {"type":"textarea","id":"main_description","label":"Main description","default":"You don't need another product piled on top. You need to remove what's undoing everything."},
+    {"type":"text","id":"vitamin_title","label":"Vitamin section title","default":"The Vitamin Infusion That Sets Us Apart"},
+    {"type":"textarea","id":"vitamin_description","label":"Vitamin section description","default":"No other showerhead delivers all three."},
     {"type":"image_picker","id":"section_image","label":"Section image (optional)"},
     {"type":"image_picker","id":"section_image_mobile","label":"Section image mobile (optional)"}
-    ,{"type":"liquid","id":"custom_html","label":"Custom section HTML (advanced)"}
-    ,{"type":"liquid","id":"custom_svg","label":"Custom SVG/HTML snippet (advanced)"}
   ],
   "presets":[{"name":"SE Showcase"}]
 }
