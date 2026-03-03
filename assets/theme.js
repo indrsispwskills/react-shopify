@@ -11,6 +11,7 @@
 
     const logoCircles = nav.querySelectorAll('svg circle');
     const logoPath = nav.querySelector('svg path');
+    const crest = nav.querySelector('.hero__panel-crest');
 
     const update = () => {
       const isScrolled = window.scrollY > 60;
@@ -18,6 +19,13 @@
       if (logoCircles[0]) logoCircles[0].setAttribute('fill', isScrolled ? 'rgba(94,138,106,.12)' : 'rgba(255,255,255,.15)');
       if (logoPath) logoPath.setAttribute('stroke', isScrolled ? 'var(--sage)' : '#fff');
       if (logoCircles[1]) logoCircles[1].setAttribute('fill', isScrolled ? 'var(--sage)' : '#fff');
+
+      if (crest) {
+        const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+        const progress = Math.max(0, Math.min(1, window.scrollY / maxScroll));
+        crest.style.width = `${(progress * 100).toFixed(2)}%`;
+        crest.style.opacity = progress > 0.01 ? '1' : '0';
+      }
     };
 
     on(window, 'scroll', update, { passive: true });
