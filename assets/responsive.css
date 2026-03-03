@@ -57,22 +57,23 @@
     align-items:center !important;
     justify-content:center !important;
     gap:6px !important;
-    width:48px !important;
-    height:48px !important;
-    background:rgba(255,255,255,.15) !important;
-    border:2px solid rgba(255,255,255,.4) !important;
-    border-radius:12px !important;
+    width:56px !important;
+    height:56px !important;
+    background:#f4f1ea !important;
+    border:1px solid var(--bdr) !important;
+    border-radius:14px !important;
+    box-shadow:0 2px 8px rgba(31,29,26,.06) !important;
     cursor:pointer !important;
     padding:8px !important;
   }
 
   .ham span{
     display:block !important;
-    width:24px !important;
+    width:26px !important;
     height:3px !important;
     border-radius:2px !important;
     margin:0 !important;
-    background:var(--ink,#1F1D1A) !important;
+    background:#24211c !important;
   }
 
   .mob-overlay{
@@ -126,6 +127,12 @@
     border-bottom:1px solid var(--bdr) !important;
     text-decoration:none !important;
   }
+
+  .mob-cta{padding:10px 14px;z-index:310}
+  .mob-cta-inner{gap:10px}
+  .mob-cta-title{font-size:14px}
+  .mob-cta-sub{font-size:12px}
+  .mob-cta button{min-width:0;width:53%;padding:14px 12px;font-size:13px;border-radius:14px}
 
   .nav-link{display:none !important}
 
