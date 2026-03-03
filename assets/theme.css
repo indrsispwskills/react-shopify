@@ -231,6 +231,13 @@ html{color-scheme:light only}
 .hero__panel-flare{color: var(--sage);font-weight: 700;font-style: italic}
 .hero__panel-glow{font-family: var(--fb);font-size: 14px;color: rgba(255, 255, 255, 0.5);transition: color 0.4s}
 .hero__panel-harbor{display: flex;gap: 36px;font-family: var(--fb);font-size: 14px;font-weight: 500;color: rgba(255, 255, 255, 0.82);transition: color 0.4s;align-items: center}
+.hero__panel-bloom.nav-scrolled{background:rgba(250,246,240,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--bdr);box-shadow:0 6px 24px rgba(31,29,26,.08)}
+.hero__panel-bloom.nav-scrolled .hero__panel-drift{color:var(--ink)}
+.hero__panel-bloom.nav-scrolled .hero__panel-glow{color:rgba(61,58,53,.72)}
+.hero__panel-bloom.nav-scrolled .hero__panel-harbor{color:rgba(31,29,26,.9)}
+.hero__panel-bloom.nav-scrolled .nav-link{color:inherit}
+.hero__panel-bloom.nav-scrolled .ham{background:rgba(31,29,26,.04);border-color:var(--bdr)}
+.hero__panel-bloom.nav-scrolled .ham span{background:var(--ink)}
 .hero__panel-ivory{padding: 11px 24px;font-size: 14px;border-radius: 10px}
 .hero__panel-jade{background: linear-gradient(155deg, rgb(26, 24, 22) 0%, rgb(40, 36, 31) 30%, rgb(52, 46, 40) 60%, rgb(62, 55, 49) 100%);padding: 150px 52px 110px;position: relative;overflow: hidden}
 .hero__panel-kindle{position: absolute;top: 8%;right: -6%;width: 620px;height: 620px;border-radius: 50%;background: radial-gradient(circle, rgba(194, 93, 78, 0.06) 0%, transparent 60%);animation: 7s ease-in-out 0s infinite normal none running glow}
