@@ -1,16 +1,12 @@
 {% style %}#shopify-section-{{ section.id }}{background:{{ section.settings.bg }};color:{{ section.settings.text }};padding-top:{{ section.settings.padding_top }}px;padding-bottom:{{ section.settings.padding_bottom }}px}{% endstyle %}
-{% if section.settings.custom_html != blank %}
-  {{ section.settings.custom_html }}
-{% else %}
-{% if section.settings.custom_svg != blank %}<div class="se-custom-svg">{{ section.settings.custom_svg }}</div>{% endif %}
         <section id="science" class="water-science__fact-crest-oasis">
             <div class="water-science__fact-crest-pulse">
                 <div class="reveal-up is-visible hero__panel-bloom-ember">
                     <div class="water-science__fact-crest-quartz">
                         <div class="water-science__fact-crest-ripple">🔬</div>
-                        <div class="section-eyebrow water-science__fact-crest-solace">THE ROOT CAUSE</div>
-                        <h2 class="water-science__fact-crest-thrive">It's Not Your Products.<br><span class="water-science__fact-crest-uplift">It's Your Water.</span></h2>
-                        <p class="water-science__fact-crest-velvet">Two forces are working against your skin and hair — one from inside, one from outside.</p>
+                        <div class="section-eyebrow water-science__fact-crest-solace">{{ section.settings.section_eyebrow }}</div>
+                        <h2 class="water-science__fact-crest-thrive">{{ section.settings.title_line_1 }}<br><span class="water-science__fact-crest-uplift">{{ section.settings.title_highlight }}</span></h2>
+                        <p class="water-science__fact-crest-velvet">{{ section.settings.title_description }}</p>
                     </div>
                 </div>
                 <div class="water-science__fact-crest-whisper">
@@ -168,7 +164,6 @@
             </div>
         </section>
 
-{% endif %}
 {% schema %}
 {
   "name":"SE Science",
@@ -177,10 +172,12 @@
     {"type":"color","id":"text","label":"Text color","default":"#1f1d1a"},
     {"type":"range","id":"padding_top","label":"Padding top","min":0,"max":120,"step":4,"unit":"px","default":0},
     {"type":"range","id":"padding_bottom","label":"Padding bottom","min":0,"max":120,"step":4,"unit":"px","default":0},
+    {"type":"text","id":"section_eyebrow","label":"Eyebrow","default":"THE ROOT CAUSE"},
+    {"type":"text","id":"title_line_1","label":"Title line 1","default":"It's Not Your Products."},
+    {"type":"text","id":"title_highlight","label":"Title highlight","default":"It's Your Water."},
+    {"type":"textarea","id":"title_description","label":"Title description","default":"Two forces are working against your skin and hair — one from inside, one from outside."},
     {"type":"image_picker","id":"section_image","label":"Section image (optional)"},
     {"type":"image_picker","id":"section_image_mobile","label":"Section image mobile (optional)"}
-    ,{"type":"liquid","id":"custom_html","label":"Custom section HTML (advanced)"}
-    ,{"type":"liquid","id":"custom_svg","label":"Custom SVG/HTML snippet (advanced)"}
   ],
   "presets":[{"name":"SE Science"}]
 }
