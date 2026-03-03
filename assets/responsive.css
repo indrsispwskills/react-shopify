@@ -4,7 +4,8 @@
 }
 
 @media (max-width: 1024px){
-  html,body,#MainContent,.content-for-layout{max-width:100%;overflow-x:hidden}
+  html,body,#MainContent,.content-for-layout{max-width:100%}
+  .hero__panel-bloom,section,img,svg,video{max-width:100%}
   .hero__panel-bloom{padding:14px 24px;left:0;right:0;width:100%;box-sizing:border-box}
   .hero__panel-harbor{gap:18px}
   .hero__panel-jade{padding:132px 24px 78px}
@@ -20,10 +21,13 @@
   .site-footer__detail-lumen-crest{margin:0 24px 44px;padding:64px 28px}
   .site-footer__detail-lumen-ivory{font-size:36px}
   .site-footer__detail-kindle-thrive{max-width:unset;margin:0 24px 48px;padding:36px;gap:22px}
+  .trust-strip__signal-bloom-glow{gap:10px;flex-wrap:wrap;overflow:visible;white-space:normal}
+
+  .hero__panel-jade,.site-footer__detail-lumen-crest,.footer-mobile__detail-jade-jade{overflow:hidden}
 }
 
 @media (max-width:768px){
-  html,body,#MainContent,.content-for-layout{max-width:100%;overflow-x:hidden}
+  html,body,#MainContent,.content-for-layout{max-width:100%}
   body{font-size:17px;line-height:1.8;-webkit-text-size-adjust:100%}
   .ham{display:block}
   .mob-cta{display:block}
@@ -136,7 +140,7 @@
   .founder-story__moment-harbor-ripple,
   .results-timeline__checkpoint-ivory-ripple{padding-left:16px;padding-right:16px}
 
-  .trust-strip__signal-bloom-glow{gap:10px;overflow:auto;white-space:nowrap;padding-bottom:2px}
+  .trust-strip__signal-bloom-glow{gap:10px;flex-wrap:wrap;overflow:visible;white-space:normal;padding-bottom:2px}
   .trust-strip__signal-bloom-harbor{flex-shrink:0}
   .trust-strip__signal-bloom-oasis{grid-template-columns:1fr 1fr;gap:12px}
 
