@@ -14,17 +14,7 @@
                 </div>
                 <div class="hero__panel-glow">{{ section.settings.tagline }}</div>
             </div>
-            <div class="hero__panel-harbor">
-                {% if section.settings.header_menu != blank %}
-                  {% for link in section.settings.header_menu.links %}
-                    <a href="{{ link.url }}" class="nav-link">{{ link.title }}</a>
-                  {% endfor %}
-                {% else %}
-                  <a href="#science" class="nav-link">{{ section.settings.secondary_label }}</a>
-                  <a href="#products" class="nav-link">Our Products</a>
-                  <a href="#results" class="nav-link">Real Results</a>
-                  <a href="#faq" class="nav-link">Common Questions</a>
-                {% endif %}
+            <div class="hero__panel-harbor"><a href="#science" class="nav-link">{{ section.settings.secondary_label }}</a><a href="#products" class="nav-link">Our Products</a><a href="#results" class="nav-link">Real Results</a><a href="#faq" class="nav-link">Common Questions</a>
                 <button class="btn btn-rose hero__panel-ivory">{{ section.settings.primary_label }}</button>
             </div>
             <button class="ham" aria-label="Open menu" type="button">
@@ -34,16 +24,10 @@
         <div class="mob-overlay"></div>
         <aside class="mob-menu" aria-label="Mobile navigation">
             <button class="mob-close" aria-label="Close menu" type="button">×</button>
-            {% if section.settings.header_menu != blank %}
-              {% for link in section.settings.header_menu.links %}
-                <a href="{{ link.url }}">{{ link.title }}</a>
-              {% endfor %}
-            {% else %}
-              <a href="#science">{{ section.settings.secondary_label }}</a>
-              <a href="#products">Our Products</a>
-              <a href="#results">Real Results</a>
-              <a href="#faq">Common Questions</a>
-            {% endif %}
+            <a href="#science">{{ section.settings.secondary_label }}</a>
+            <a href="#products">Our Products</a>
+            <a href="#results">Real Results</a>
+            <a href="#faq">Common Questions</a>
             <a href="#products" class="btn btn-rose" style="margin-top:20px;justify-content:center">{{ section.settings.primary_label }}</a>
         </aside>
         <div class="mob-cta" aria-label="Mobile sticky purchase CTA">
@@ -69,9 +53,26 @@
             <div class="hero__panel-uplift"></div>
             <div class="hero__panel-velvet">
                 <div>
-                    <div class="hero-content-reveal hero__panel-whisper"><span class="hero__panel-xenial"></span>Designed for Women Over 50</div>
+                    {% if section.settings.hero_tagline != blank %}
+                    <div class="hero-content-reveal hero__panel-whisper">
+
+                    {% if section.settings.show_tagline_icon %}
+                    <span class="hero__panel-xenial"></span>
+                    {% endif %}
+
+                    {{ section.settings.hero_tagline }}
+
+                    </div>
+                    {% endif %}
                     <h1 class="hero-content-reveal hero-main-heading hero__panel-yonder">{{ section.settings.headline }}</h1>
-                    <p class="hero-content-reveal hero-support-text hero__panel-aurora-aurora">Menopause is already thinning your hair and drying your skin. Chlorine and hard water are <strong class="hero__panel-aurora-bloom">doubling the damage</strong> — and blocking every product you apply.</p>
+                    <p class="hero-content-reveal hero-support-text hero__panel-aurora-aurora">
+                    {{ section.settings.headline_part_1 }}
+                    Chlorine and hard water are 
+                    <strong class="hero__panel-aurora-bloom">
+                    {{ section.settings.headline_highlight }}
+                    </strong>
+                    {{ section.settings.headline_part_2 }}
+                    </p>
                     <div class="hero-content-reveal hero-action-row hero__panel-aurora-crest">
                         <button class="btn btn-rose hero__panel-aurora-drift">{{ section.settings.primary_label }}</button>
                         <a href="#science" class="hero__panel-aurora-ember">
@@ -85,7 +86,7 @@
                     <div class="hero-content-reveal hero-metric-row hero__panel-aurora-glow">
                         <div>
                             <div class="hero__panel-aurora-harbor"><span class="hero__panel-aurora-ivory">531+</span></div>
-                            <div class="hero__panel-aurora-jade">Women Over 50 Trust ShowerEnvy</div>
+                            <div class="hero__panel-aurora-jade">Women Trust ShowerEnvy</div>
                         </div>
                         <div>
                             <div class="hero__panel-aurora-harbor"><span class="hero__panel-aurora-ivory">0.3%</span></div>
@@ -266,14 +267,40 @@
   "name": "SE Hero",
   "settings": [
     {"type":"text","id":"tagline","label":"Tagline","default":"Filtered Showerheads for Women Over 50"},
+   {
+  "type": "text",
+  "id": "hero_tagline",
+  "label": "Hero Tagline Text",
+  "default": "Designed for Women Over 50"
+},
+{
+  "type": "checkbox",
+  "id": "show_tagline_icon",
+  "label": "Show Tagline Icon",
+  "default": true
+},
     {"type":"liquid","id":"headline","label":"Headline (HTML allowed)","default":"You Spend $200/mo<br>on Hair &amp; Skin.<br><span class=\"hero__panel-zenith\">Your Shower Undoes It Every Morning.</span>"},
+   {
+  "type": "text",
+  "id": "headline_part_1",
+  "label": "Headline Part 1",
+  "default": "Menopause is already thinning your hair and drying your skin."
+},
+{
+  "type": "text",
+  "id": "headline_highlight",
+  "label": "Highlighted Text",
+  "default": "doubling the damage"
+},
+{
+  "type": "text",
+  "id": "headline_part_2",
+  "label": "Headline Part 2",
+  "default": "— and blocking every product you apply."
+},
     {"type":"text","id":"primary_label","label":"Primary button label","default":"Find Your Filter"},
     {"type":"text","id":"secondary_label","label":"Secondary button label","default":"How It Works"},
-    {"type":"link_list","id":"header_menu","label":"Header menu"},
-    {"type":"image_picker","id":"hero_image","label":"Hero image"},
-    {"type":"liquid","id":"custom_shower_svg","label":"Custom SVG/HTML (overrides default shower SVG)"}
-    ,{"type":"liquid","id":"custom_html","label":"Custom section HTML (advanced)"}
-    ,{"type":"liquid","id":"custom_svg","label":"Custom SVG/HTML snippet (advanced)"}
+    {"type":"image_picker","id":"hero_image","label":"Hero image"}
   ],
   "presets":[{"name":"SE Hero"}]
 }

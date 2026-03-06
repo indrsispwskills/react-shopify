@@ -13,75 +13,257 @@
                             <circle cx="16" cy="24" r="1.2" fill="var(--sage)"></circle>
                         </svg><span>Shower<span class="hero__panel-flare">Envy</span></span>
                     </div>
-                    <div class="site-footer__detail-lumen-quartz">Filtered Showerheads for Women Over 50</div>
-                    <p class="site-footer__detail-lumen-ripple">Designed for women navigating hormonal changes. Because your water should help — not hurt.</p>
+                   {% if section.settings.footer_tagline_heading != blank %}
+  <div class="site-footer__detail-lumen-quartz">
+    {{ section.settings.footer_tagline_heading }}
+  </div>
+{% endif %}
+
+{% if section.settings.footer_tagline_text != blank %}
+  <p class="site-footer__detail-lumen-ripple">
+    {{ section.settings.footer_tagline_text }}
+  </p>
+{% endif %}
                 </div>
+
+                
+
                 <div class="site-footer__detail-lumen-solace">
-                    <div>
-                        <div class="site-footer__detail-lumen-thrive">{{ section.settings.footer_menu_1_title }}</div>
-                        {% if section.settings.footer_menu_1 != blank %}
-                          {% for link in section.settings.footer_menu_1.links %}
-                            <a href="{{ link.url }}" class="site-footer__detail-lumen-uplift">{{ link.title }}</a>
-                          {% endfor %}
-                        {% else %}
-                          <div class="site-footer__detail-lumen-uplift">The 2.0 Handheld</div>
-                          <div class="site-footer__detail-lumen-uplift">The 5.0 Stationary</div>
-                          <div class="site-footer__detail-lumen-uplift">Filters</div>
-                          <div class="site-footer__detail-lumen-uplift">Bundles</div>
-                        {% endif %}
-                    </div>
-                    <div>
-                        <div class="site-footer__detail-lumen-thrive">{{ section.settings.footer_menu_2_title }}</div>
-                        {% if section.settings.footer_menu_2 != blank %}
-                          {% for link in section.settings.footer_menu_2.links %}
-                            <a href="{{ link.url }}" class="site-footer__detail-lumen-uplift">{{ link.title }}</a>
-                          {% endfor %}
-                        {% else %}
-                          <div class="site-footer__detail-lumen-uplift">How It Works</div>
-                          <div class="site-footer__detail-lumen-uplift">Results Timeline</div>
-                          <div class="site-footer__detail-lumen-uplift">Blog</div>
-                          <div class="site-footer__detail-lumen-uplift">Reviews</div>
-                        {% endif %}
-                    </div>
-                    <div>
-                        <div class="site-footer__detail-lumen-thrive">{{ section.settings.footer_menu_3_title }}</div>
-                        {% if section.settings.footer_menu_3 != blank %}
-                          {% for link in section.settings.footer_menu_3.links %}
-                            <a href="{{ link.url }}" class="site-footer__detail-lumen-uplift">{{ link.title }}</a>
-                          {% endfor %}
-                        {% else %}
-                          <div class="site-footer__detail-lumen-uplift">Questions</div>
-                          <div class="site-footer__detail-lumen-uplift">Returns</div>
-                          <div class="site-footer__detail-lumen-uplift">Guarantee</div>
-                          <div class="site-footer__detail-lumen-uplift">Contact</div>
-                        {% endif %}
-                    </div>
-                </div>
+
+  {% for block in section.blocks %}
+    <div {{ block.shopify_attributes }}>
+      
+      {% if block.settings.column_title != blank %}
+        <div class="site-footer__detail-lumen-thrive">
+          {{ block.settings.column_title }}
+        </div>
+      {% endif %}
+
+      {% for i in (1..4) %}
+        {% assign item_text = 'item_text_' | append: i %}
+        {% assign item_link = 'item_link_' | append: i %}
+
+        {% if block.settings[item_text] != blank %}
+          <div class="site-footer__detail-lumen-uplift">
+            {% if block.settings[item_link] != blank %}
+              <a href="{{ block.settings[item_link] }}">
+                {{ block.settings[item_text] }}
+              </a>
+            {% else %}
+              {{ block.settings[item_text] }}
+            {% endif %}
+          </div>
+        {% endif %}
+      {% endfor %}
+
+    </div>
+  {% endfor %}
+
+</div>
             </div>
-            <div class="site-footer__detail-lumen-velvet"><span>© 2026 ShowerEnvy</span><span>Privacy · Terms · Accessibility</span></div>
+            <div class="site-footer__detail-lumen-velvet"><span>© 2026 ShowerEnvy</span><span>
+  {% if section.settings.legal_text_1 != blank %}
+    <a href="{{ section.settings.legal_link_1 }}">
+      {{ section.settings.legal_text_1 }}
+    </a>
+  {% endif %}
+
+  {% if section.settings.legal_text_2 != blank %}
+    · 
+    <a href="{{ section.settings.legal_link_2 }}">
+      {{ section.settings.legal_text_2 }}
+    </a>
+  {% endif %}
+
+  {% if section.settings.legal_text_3 != blank %}
+    · 
+    <a href="{{ section.settings.legal_link_3 }}">
+      {{ section.settings.legal_text_3 }}
+    </a>
+  {% endif %}
+</span></div>
         </footer>
         <button aria-label="Back to top" class="site-footer__detail-lumen-whisper back-to-top">↑</button>
 
 {% endif %}
+
+
+  
 {% schema %}
 {
-  "name":"SE Footer",
-  "settings":[
-    {"type":"color","id":"bg","label":"Background color","default":"#ffffff"},
-    {"type":"color","id":"text","label":"Text color","default":"#1f1d1a"},
-    {"type":"range","id":"padding_top","label":"Padding top","min":0,"max":120,"step":4,"unit":"px","default":0},
-    {"type":"range","id":"padding_bottom","label":"Padding bottom","min":0,"max":120,"step":4,"unit":"px","default":0},
-    {"type":"image_picker","id":"section_image","label":"Section image (optional)"},
-    {"type":"image_picker","id":"section_image_mobile","label":"Section image mobile (optional)"},
-    {"type":"text","id":"footer_menu_1_title","label":"Footer column 1 title","default":"Shop"},
-    {"type":"link_list","id":"footer_menu_1","label":"Footer column 1 menu"},
-    {"type":"text","id":"footer_menu_2_title","label":"Footer column 2 title","default":"Learn"},
-    {"type":"link_list","id":"footer_menu_2","label":"Footer column 2 menu"},
-    {"type":"text","id":"footer_menu_3_title","label":"Footer column 3 title","default":"Support"},
-    {"type":"link_list","id":"footer_menu_3","label":"Footer column 3 menu"},
-    {"type":"liquid","id":"custom_html","label":"Custom section HTML (advanced)"},
-    {"type":"liquid","id":"custom_svg","label":"Custom SVG/HTML snippet (advanced)"}
+  "name": "SE Footer",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text",
+      "label": "Text color",
+      "default": "#1f1d1a"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    }, {
+  "type": "text",
+  "id": "footer_tagline_heading",
+  "label": "Footer Tagline Heading",
+  "default": "Filtered Showerheads for Women Over 50"
+},
+{
+  "type": "textarea",
+  "id": "footer_tagline_text",
+  "label": "Footer Tagline Description",
+  "default": "Designed for women navigating hormonal changes. Because your water should help — not hurt."
+},
+{
+  "type": "text",
+  "id": "legal_text_1",
+  "label": "Legal Link 1 Text",
+  "default": "Privacy"
+},
+{
+  "type": "url",
+  "id": "legal_link_1",
+  "label": "Legal Link 1 URL"
+},
+{
+  "type": "text",
+  "id": "legal_text_2",
+  "label": "Legal Link 2 Text",
+  "default": "Terms"
+},
+{
+  "type": "url",
+  "id": "legal_link_2",
+  "label": "Legal Link 2 URL"
+},
+{
+  "type": "text",
+  "id": "legal_text_3",
+  "label": "Legal Link 3 Text",
+  "default": "Accessibility"
+},
+{
+  "type": "url",
+  "id": "legal_link_3",
+  "label": "Legal Link 3 URL"
+}
   ],
-  "presets":[{"name":"SE Footer"}]
+
+  "blocks": [
+    {
+      "type": "footer_column",
+      "name": "Footer Column",
+      "settings": [
+        {
+          "type": "text",
+          "id": "column_title",
+          "label": "Column Title",
+          "default": "Column Title"
+        },
+        {
+          "type": "text",
+          "id": "item_text_1",
+          "label": "Item 1 Text"
+        },
+        {
+          "type": "url",
+          "id": "item_link_1",
+          "label": "Item 1 Link"
+        },
+        {
+          "type": "text",
+          "id": "item_text_2",
+          "label": "Item 2 Text"
+        },
+        {
+          "type": "url",
+          "id": "item_link_2",
+          "label": "Item 2 Link"
+        },
+        {
+          "type": "text",
+          "id": "item_text_3",
+          "label": "Item 3 Text"
+        },
+        {
+          "type": "url",
+          "id": "item_link_3",
+          "label": "Item 3 Link"
+        },
+        {
+          "type": "text",
+          "id": "item_text_4",
+          "label": "Item 4 Text"
+        },
+        {
+          "type": "url",
+          "id": "item_link_4",
+          "label": "Item 4 Link"
+        }
+      ]
+    }
+  ],
+
+  "max_blocks": 3,
+
+  "presets": [
+    {
+      "name": "SE Footer",
+      "blocks": [
+        {
+          "type": "footer_column",
+          "settings": {
+            "column_title": "Shop",
+            "item_text_1": "The 2.0 Handheld",
+            "item_text_2": "The 5.0 Stationary",
+            "item_text_3": "Filters",
+            "item_text_4": "Bundles"
+          }
+        },
+        {
+          "type": "footer_column",
+          "settings": {
+            "column_title": "Learn",
+            "item_text_1": "How It Works",
+            "item_text_2": "Results Timeline",
+            "item_text_3": "Blog",
+            "item_text_4": "Reviews"
+          }
+        },
+        {
+          "type": "footer_column",
+          "settings": {
+            "column_title": "Support",
+            "item_text_1": "Questions",
+            "item_text_2": "Returns",
+            "item_text_3": "Guarantee",
+            "item_text_4": "Contact"
+          }
+        }
+      ]
+    }
+  ]
 }
 {% endschema %}

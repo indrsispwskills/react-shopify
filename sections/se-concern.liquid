@@ -7,10 +7,23 @@
             <div class="reveal-up is-visible hero__panel-bloom-ember">
                 <div class="concern-section__point-bloom-zenith">
                     <div class="concern-section__point-crest-aurora">💭</div>
-                    <div class="section-eyebrow concern-section__point-crest-bloom">THE PROBLEM NOBODY TALKS ABOUT</div>
-                    <h2 class="concern-section__point-crest-crest">Your Body Is Changing.<br>Your Water Should Change With It.</h2>
-                    <p class="concern-section__point-crest-drift">You've tried the serums, the salon treatments, the supplements your friend swore by. And maybe they helped — a little. For a while. But the hair in the drain kept coming.</p>
-                </div>
+                    {% if section.settings.eyebrow_text != blank %}
+  <div class="section-eyebrow concern-section__point-crest-bloom">
+    {{ section.settings.eyebrow_text }}
+  </div>
+{% endif %}
+
+{% if section.settings.heading_text != blank %}
+  <h2 class="concern-section__point-crest-crest">
+    {{ section.settings.heading_text }}
+  </h2>
+{% endif %}
+
+{% if section.settings.description_text != blank %}
+  <p class="concern-section__point-crest-drift">
+    {{ section.settings.description_text }}
+  </p>
+{% endif %}   </div>
             </div>
             <div class="content-layout is-visible concern-section__point-crest-ember">
                 <div class="card concern-section__point-crest-flare">
@@ -23,7 +36,7 @@
                             <text x="34" y="50" fill="var(--rose)" font-size="22" font-weight="800" opacity=".5" font-family="var(--fh)">$</text>
                         </svg>
                     </div>
-                    <p class="concern-section__point-crest-harbor">$80–$250/month on products that sit on the surface of mineral-coated hair</p>
+                    <p class="concern-section__point-crest-harbor">{{ section.settings.point_one }}</p>
                 </div>
                 <div class="card concern-section__point-crest-flare">
                     <div class="concern-section__point-crest-glow">
@@ -41,7 +54,7 @@
                             <path d="M58 32c-7 9-2 14-5 22" stroke="var(--rose)" stroke-width="2" opacity=".35" fill="none" stroke-linecap="round"></path>
                         </svg>
                     </div>
-                    <p class="concern-section__point-crest-harbor">Your ponytail is half the thickness it was two years ago</p>
+                    <p class="concern-section__point-crest-harbor">{{ section.settings.point_two }}</p>
                 </div>
                 <div class="card concern-section__point-crest-flare">
                     <div class="concern-section__point-crest-glow">
@@ -53,7 +66,7 @@
                             <text x="44" y="64" text-anchor="middle" fill="var(--rose)" font-size="18" font-weight="800" opacity=".4">✕</text>
                         </svg>
                     </div>
-                    <p class="concern-section__point-crest-harbor">Your $200 color fades just two weeks after leaving the salon</p>
+                    <p class="concern-section__point-crest-harbor">{{ section.settings.point_three }}</p>
                 </div>
                 <div class="card concern-section__point-crest-flare">
                     <div class="concern-section__point-crest-glow">
@@ -69,7 +82,7 @@
                             <text x="44" y="72" text-anchor="middle" fill="var(--rose)" font-size="8" font-weight="600" opacity=".4">DRY · CRACKED</text>
                         </svg>
                     </div>
-                    <p class="concern-section__point-crest-harbor">Your skin feels tight and papery within minutes of showering</p>
+                    <p class="concern-section__point-crest-harbor"> {{ section.settings.point_four }}</p>
                 </div>
                 <div class="card concern-section__point-crest-flare">
                     <div class="concern-section__point-crest-glow">
@@ -81,7 +94,7 @@
                             <text x="34" y="50" fill="var(--rose)" font-size="22" font-weight="800" opacity=".5" font-family="var(--fh)">$</text>
                         </svg>
                     </div>
-                    <p class="concern-section__point-crest-harbor">You slather moisturizer morning and night just to maintain what's left</p>
+                    <p class="concern-section__point-crest-harbor"> {{ section.settings.point_five }}</p>
                 </div>
                 <div class="card concern-section__point-crest-flare">
                     <div class="concern-section__point-crest-glow">
@@ -96,7 +109,7 @@
                             <text x="44" y="24" text-anchor="middle" fill="var(--rose)" font-size="12" font-weight="700" opacity=".6">?</text>
                         </svg>
                     </div>
-                    <p class="concern-section__point-crest-harbor">You avoid mirrors because the person looking back doesn't feel like you</p>
+                    <p class="concern-section__point-crest-harbor"> {{ section.settings.point_six }}</p>
                 </div>
             </div>
             <div class="reveal-up is-visible concern-section__point-crest-ivory">
@@ -123,8 +136,17 @@
                             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"></path>
                         </svg>
                     </div>
-                    <p class="concern-section__point-crest-meadow">"I feel like I aged 15 years in the past three. I tried everything. Nobody told me my water was part of the problem."</p>
-                    <p class="concern-section__point-crest-nova">— From a real community discussion on r/Menopause</p>
+                            {% if section.settings.testimonial_text != blank %}
+                            <p class="concern-section__point-crest-meadow">
+                            {{ section.settings.testimonial_text }}
+                            </p>
+                            {% endif %}
+
+                            {% if section.settings.testimonial_source != blank %}
+                            <p class="concern-section__point-crest-nova">
+                            {{ section.settings.testimonial_source }}
+                            </p>
+                            {% endif %}
                 </div>
             </div>
         </section>
@@ -138,10 +160,72 @@
     {"type":"color","id":"text","label":"Text color","default":"#1f1d1a"},
     {"type":"range","id":"padding_top","label":"Padding top","min":0,"max":120,"step":4,"unit":"px","default":0},
     {"type":"range","id":"padding_bottom","label":"Padding bottom","min":0,"max":120,"step":4,"unit":"px","default":0},
-    {"type":"image_picker","id":"section_image","label":"Section image (optional)"},
-    {"type":"image_picker","id":"section_image_mobile","label":"Section image mobile (optional)"}
-    ,{"type":"liquid","id":"custom_html","label":"Custom section HTML (advanced)"}
-    ,{"type":"liquid","id":"custom_svg","label":"Custom SVG/HTML snippet (advanced)"}
+    {
+  "type": "text",
+  "id": "eyebrow_text",
+  "label": "Eyebrow Text",
+  "default": "THE PROBLEM NOBODY TALKS ABOUT"
+},
+{
+  "type": "textarea",
+  "id": "heading_text",
+  "label": "Main Heading",
+  "default": "Your Body Is Changing.<br>Your Water Should Change With It."
+},
+{
+  "type": "textarea",
+  "id": "description_text",
+  "label": "Description Text",
+  "default": "You've tried the serums, the salon treatments, the supplements your friend swore by. And maybe they helped — a little. For a while. But the hair in the drain kept coming."
+}
+    ,{
+  "type": "textarea",
+  "id": "point_one",
+  "label": "Concern Point 1",
+  "default": "$80–$250/month on products that sit on the surface of mineral-coated hair"
+},
+{
+  "type": "textarea",
+  "id": "point_two",
+  "label": "Concern Point 2",
+  "default": "Your ponytail is half the thickness it was two years ago"
+},
+{
+  "type": "textarea",
+  "id": "point_three",
+  "label": "Concern Point 3",
+  "default": "Your $200 color fades just two weeks after leaving the salon"
+},
+{
+  "type": "textarea",
+  "id": "point_four",
+  "label": "Concern Point 4",
+  "default": "Your skin feels tight and papery within minutes of showering"
+},
+{
+  "type": "textarea",
+  "id": "point_five",
+  "label": "Concern Point 5",
+  "default": "You slather moisturizer morning and night just to maintain what's left"
+},{
+  "type": "textarea",
+  "id": "point_six",
+  "label": "Concern Point 6",
+  "default": "You avoid mirrors because the person looking back doesn't feel like you"
+}
+    ,{
+  "type": "textarea",
+  "id": "testimonial_text",
+  "label": "Testimonial Text",
+  "default": "I feel like I aged 15 years in the past three. I tried everything. Nobody told me my water was part of the problem."
+},
+{
+  "type": "text",
+  "id": "testimonial_source",
+  "label": "Testimonial Source",
+  "default": "— From a real community discussion on r/Menopause"
+}
+    
   ],
   "presets":[{"name":"SE Concern"}]
 }

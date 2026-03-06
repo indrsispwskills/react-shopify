@@ -7,17 +7,30 @@
             <div class="reveal-up hero__panel-bloom-ember">
                 <div class="concern-section__point-bloom-zenith">
                     <div class="product-showcase__detail-ember-glow">📅</div>
-                    <div class="section-eyebrow product-showcase__detail-ember-harbor">WHAT TO EXPECT — HONESTLY</div>
-                    <h2 class="results-timeline__checkpoint-ivory-solace">Your Results Timeline</h2>
-                    <p class="results-timeline__checkpoint-ivory-thrive">Real changes take real time. Here's what the biology says — not marketing hype.</p>
-                </div>
+                   {% if section.settings.eyebrow_text != blank %}
+  <div class="section-eyebrow product-showcase__detail-ember-harbor">
+    {{ section.settings.eyebrow_text }}
+  </div>
+{% endif %}
+
+{% if section.settings.heading_text != blank %}
+  <h2 class="results-timeline__checkpoint-ivory-solace">
+    {{ section.settings.heading_text }}
+  </h2>
+{% endif %}
+
+{% if section.settings.subheading_text != blank %}
+  <p class="results-timeline__checkpoint-ivory-thrive">
+    {{ section.settings.subheading_text }}
+  </p>
+{% endif %}   </div>
             </div>
             <div class="hero__panel-aurora-kindle">
                 <div class="results-timeline__checkpoint-ivory-uplift">
                     <div class="results-timeline__checkpoint-ivory-velvet"></div>
                 </div>
                 <div class="results-timeline__checkpoint-ivory-whisper">
-                    <div class="results-timeline__checkpoint-ivory-xenial">
+                    <div class="results-timeline__checkpoint-ivory-xenial timeline_one_mob">
                         <div class="results-timeline__checkpoint-ivory-yonder">
                             <div class="results-timeline__checkpoint-ivory-zenith">
                                 <div class="results-timeline__checkpoint-jade-aurora">
@@ -58,8 +71,8 @@
                         </div>
                         <div class="results-timeline__checkpoint-jade-pulse"></div>
                     </div>
-                    <div class="results-timeline__checkpoint-ivory-xenial">
-                        <div class="results-timeline__checkpoint-ivory-yonder"></div>
+                    <div class="results-timeline__checkpoint-ivory-xenial timeline_two_mob">
+                        <div class="results-timeline__checkpoint-ivory-yonder adjust-mob"></div>
                         <div class="results-timeline__checkpoint-jade-nova">
                             <div class="results-timeline__checkpoint-jade-oasis">✨</div>
                         </div>
@@ -99,7 +112,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="results-timeline__checkpoint-ivory-xenial">
+                    <div class="results-timeline__checkpoint-ivory-xenial timeline_three_mob">
                         <div class="results-timeline__checkpoint-ivory-yonder">
                             <div class="results-timeline__checkpoint-ivory-zenith">
                                 <div class="results-timeline__checkpoint-jade-aurora">
@@ -140,8 +153,8 @@
                         </div>
                         <div class="results-timeline__checkpoint-jade-pulse"></div>
                     </div>
-                    <div class="results-timeline__checkpoint-kindle-bloom">
-                        <div class="results-timeline__checkpoint-ivory-yonder"></div>
+                    <div class="results-timeline__checkpoint-kindle-bloom timeline_four_mob">
+                        <div class="results-timeline__checkpoint-ivory-yonder adjust-mob"></div>
                         <div class="results-timeline__checkpoint-jade-nova">
                             <div class="results-timeline__checkpoint-jade-oasis">🌟</div>
                         </div>
@@ -183,12 +196,23 @@
                     </div>
                 </div>
             </div>
-            <div class="reveal-up hero__panel-bloom-ember">
-                <div class="faq-section__entry-kindle-harbor">
-                    <p class="faq-section__entry-kindle-ivory">"Your body wants to heal. It just needs you to stop pouring chemicals on it every morning."</p>
-                    <p class="faq-section__entry-kindle-jade">— Based on dermatological research for women 50+</p>
-                </div>
-            </div>
+           <div class="reveal-up hero__panel-bloom-ember">
+  <div class="faq-section__entry-kindle-harbor">
+    
+    {% if section.settings.quote_text != blank %}
+      <p class="faq-section__entry-kindle-ivory">
+        {{ section.settings.quote_text }}
+      </p>
+    {% endif %}
+
+    {% if section.settings.quote_source != blank %}
+      <p class="faq-section__entry-kindle-jade">
+        {{ section.settings.quote_source }}
+      </p>
+    {% endif %}
+
+  </div>
+</div>
         </section>
 
 {% endif %}
@@ -200,10 +224,35 @@
     {"type":"color","id":"text","label":"Text color","default":"#1f1d1a"},
     {"type":"range","id":"padding_top","label":"Padding top","min":0,"max":120,"step":4,"unit":"px","default":0},
     {"type":"range","id":"padding_bottom","label":"Padding bottom","min":0,"max":120,"step":4,"unit":"px","default":0},
-    {"type":"image_picker","id":"section_image","label":"Section image (optional)"},
-    {"type":"image_picker","id":"section_image_mobile","label":"Section image mobile (optional)"}
-    ,{"type":"liquid","id":"custom_html","label":"Custom section HTML (advanced)"}
-    ,{"type":"liquid","id":"custom_svg","label":"Custom SVG/HTML snippet (advanced)"}
+   {
+  "type": "text",
+  "id": "eyebrow_text",
+  "label": "Eyebrow Text",
+  "default": "WHAT TO EXPECT — HONESTLY"
+},
+{
+  "type": "text",
+  "id": "heading_text",
+  "label": "Main Heading",
+  "default": "Your Results Timeline"
+},
+{
+  "type": "textarea",
+  "id": "subheading_text",
+  "label": "Subheading Text",
+  "default": "Real changes take real time. Here's what the biology says — not marketing hype."
+}, {
+  "type": "textarea",
+  "id": "quote_text",
+  "label": "Quote Text",
+  "default": "\"Your body wants to heal. It just needs you to stop pouring chemicals on it every morning.\""
+},
+{
+  "type": "text",
+  "id": "quote_source",
+  "label": "Quote Source",
+  "default": "— Based on dermatological research for women 50+"
+}
   ],
   "presets":[{"name":"SE Timeline"}]
 }

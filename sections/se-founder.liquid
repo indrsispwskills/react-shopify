@@ -8,9 +8,34 @@
                 <div class="reveal-up hero__panel-bloom-ember">
                     <div class="concern-section__point-bloom-zenith">
                         <div class="founder-story__moment-harbor-solace">👩&zwj;⚕️</div>
-                        <div class="section-eyebrow concern-section__point-crest-bloom">THE WOMAN BEHIND SHOWERENVY</div>
-                        <h2 class="water-science__fact-crest-thrive">She Didn't Set Out to Build a Product.<br><span class="water-science__fact-crest-uplift">She Set Out to Solve Her Own Problem.</span></h2></div>
-                </div>
+                       
+                       
+                        {% if section.settings.founder_eyebrow != blank %}
+  <div class="section-eyebrow concern-section__point-crest-bloom">
+    {{ section.settings.founder_eyebrow }}
+  </div>
+{% endif %}
+
+{% if section.settings.founder_heading_line1 != blank or section.settings.founder_heading_highlight != blank %}
+  <h2 class="water-science__fact-crest-thrive">
+    
+    {% if section.settings.founder_heading_line1 != blank %}
+      {{ section.settings.founder_heading_line1 }}
+    {% endif %}
+    
+    {% if section.settings.founder_heading_highlight != blank %}
+      <br>
+      <span class="water-science__fact-crest-uplift">
+        {{ section.settings.founder_heading_highlight }}
+      </span>
+    {% endif %}
+   
+
+  </h2>
+  
+{% endif %}
+ </div>
+                    </div>
                 <div class="founder-story__moment-harbor-thrive">
                     <div class="reveal-left hero__panel-bloom-ember">
                         <div>
@@ -72,11 +97,25 @@
     {"type":"color","id":"text","label":"Text color","default":"#1f1d1a"},
     {"type":"range","id":"padding_top","label":"Padding top","min":0,"max":120,"step":4,"unit":"px","default":0},
     {"type":"range","id":"padding_bottom","label":"Padding bottom","min":0,"max":120,"step":4,"unit":"px","default":0},
-    {"type":"image_picker","id":"section_image","label":"Section image (optional)"},
-    {"type":"image_picker","id":"section_image_mobile","label":"Section image mobile (optional)"}
-    ,{"type":"liquid","id":"custom_html","label":"Custom section HTML (advanced)"}
-    ,{"type":"liquid","id":"custom_svg","label":"Custom SVG/HTML snippet (advanced)"}
-  ],
+    {
+  "type": "text",
+  "id": "founder_eyebrow",
+  "label": "Founder Eyebrow Text",
+  "default": "THE WOMAN BEHIND SHOWERENVY"
+},
+{
+  "type": "text",
+  "id": "founder_heading_line1",
+  "label": "Founder Heading Line 1",
+  "default": "She Didn't Set Out to Build a Product."
+},
+{
+  "type": "text",
+  "id": "founder_heading_highlight",
+  "label": "Founder Highlight Line",
+  "default": "She Set Out to Solve Her Own Problem."
+}
+],
   "presets":[{"name":"SE Founder"}]
 }
 {% endschema %}
