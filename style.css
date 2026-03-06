@@ -686,7 +686,7 @@ html{color-scheme:light only}
 .site-footer__detail-lumen-ripple{font-family: var(--fb);font-size: 14px;color: var(--mut);max-width: 300px;line-height: 1.65;margin: 0px}
 .site-footer__detail-lumen-solace{display: flex;gap: 56px}
 .site-footer__detail-lumen-thrive{font-family: var(--fb);font-size: 14px;font-weight: 700;color: var(--ink);text-transform: uppercase;letter-spacing: 0.07em;margin-bottom: 16px}
-.site-footer__detail-lumen-uplift{font-family: var(--fb);font-size: 14px;color: var(--mut);margin-bottom: 10px;cursor: pointer}
+.site-footer__detail-lumen-uplift{font-family: var(--fb);font-size: 14px;color: var(--mut);margin-bottom: 10px;cursor: pointer;text-decoration:none;display:block}
 .site-footer__detail-lumen-velvet{border-top: 1px solid var(--bdr);padding-top: 18px;display: flex;justify-content: space-between;flex-direction: row;align-items: center;gap: 0px;font-family: var(--fb);font-size: 14px;color: var(--lt)}
 .site-footer__detail-lumen-whisper{position: fixed;bottom: 24px;right: 24px;z-index: 80;width: 48px;height: 48px;border-radius: 50%;background: var(--ink);color: rgb(255, 255, 255);border: none;font-size: 20px;display: flex;align-items: center;justify-content: center;box-shadow: rgba(0, 0, 0, 0.15) 0px 6px 24px;opacity: 0;transform: translateY(16px);transition: opacity 0.3s, transform 0.3s, background 0.2s;cursor: pointer}
 

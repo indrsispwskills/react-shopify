@@ -14,7 +14,17 @@
                 </div>
                 <div class="hero__panel-glow">{{ section.settings.tagline }}</div>
             </div>
-            <div class="hero__panel-harbor"><a href="#science" class="nav-link">{{ section.settings.secondary_label }}</a><a href="#products" class="nav-link">Our Products</a><a href="#results" class="nav-link">Real Results</a><a href="#faq" class="nav-link">Common Questions</a>
+            <div class="hero__panel-harbor">
+                {% if section.settings.header_menu != blank %}
+                  {% for link in section.settings.header_menu.links %}
+                    <a href="{{ link.url }}" class="nav-link">{{ link.title }}</a>
+                  {% endfor %}
+                {% else %}
+                  <a href="#science" class="nav-link">{{ section.settings.secondary_label }}</a>
+                  <a href="#products" class="nav-link">Our Products</a>
+                  <a href="#results" class="nav-link">Real Results</a>
+                  <a href="#faq" class="nav-link">Common Questions</a>
+                {% endif %}
                 <button class="btn btn-rose hero__panel-ivory">{{ section.settings.primary_label }}</button>
             </div>
             <button class="ham" aria-label="Open menu" type="button">
@@ -24,10 +34,16 @@
         <div class="mob-overlay"></div>
         <aside class="mob-menu" aria-label="Mobile navigation">
             <button class="mob-close" aria-label="Close menu" type="button">×</button>
-            <a href="#science">{{ section.settings.secondary_label }}</a>
-            <a href="#products">Our Products</a>
-            <a href="#results">Real Results</a>
-            <a href="#faq">Common Questions</a>
+            {% if section.settings.header_menu != blank %}
+              {% for link in section.settings.header_menu.links %}
+                <a href="{{ link.url }}">{{ link.title }}</a>
+              {% endfor %}
+            {% else %}
+              <a href="#science">{{ section.settings.secondary_label }}</a>
+              <a href="#products">Our Products</a>
+              <a href="#results">Real Results</a>
+              <a href="#faq">Common Questions</a>
+            {% endif %}
             <a href="#products" class="btn btn-rose" style="margin-top:20px;justify-content:center">{{ section.settings.primary_label }}</a>
         </aside>
         <div class="mob-cta" aria-label="Mobile sticky purchase CTA">
@@ -253,6 +269,7 @@
     {"type":"liquid","id":"headline","label":"Headline (HTML allowed)","default":"You Spend $200/mo<br>on Hair &amp; Skin.<br><span class=\"hero__panel-zenith\">Your Shower Undoes It Every Morning.</span>"},
     {"type":"text","id":"primary_label","label":"Primary button label","default":"Find Your Filter"},
     {"type":"text","id":"secondary_label","label":"Secondary button label","default":"How It Works"},
+    {"type":"link_list","id":"header_menu","label":"Header menu"},
     {"type":"image_picker","id":"hero_image","label":"Hero image"},
     {"type":"liquid","id":"custom_shower_svg","label":"Custom SVG/HTML (overrides default shower SVG)"}
     ,{"type":"liquid","id":"custom_html","label":"Custom section HTML (advanced)"}

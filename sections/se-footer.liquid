@@ -18,25 +18,43 @@
                 </div>
                 <div class="site-footer__detail-lumen-solace">
                     <div>
-                        <div class="site-footer__detail-lumen-thrive">Shop</div>
-                        <div class="site-footer__detail-lumen-uplift">The 2.0 Handheld</div>
-                        <div class="site-footer__detail-lumen-uplift">The 5.0 Stationary</div>
-                        <div class="site-footer__detail-lumen-uplift">Filters</div>
-                        <div class="site-footer__detail-lumen-uplift">Bundles</div>
+                        <div class="site-footer__detail-lumen-thrive">{{ section.settings.footer_menu_1_title }}</div>
+                        {% if section.settings.footer_menu_1 != blank %}
+                          {% for link in section.settings.footer_menu_1.links %}
+                            <a href="{{ link.url }}" class="site-footer__detail-lumen-uplift">{{ link.title }}</a>
+                          {% endfor %}
+                        {% else %}
+                          <div class="site-footer__detail-lumen-uplift">The 2.0 Handheld</div>
+                          <div class="site-footer__detail-lumen-uplift">The 5.0 Stationary</div>
+                          <div class="site-footer__detail-lumen-uplift">Filters</div>
+                          <div class="site-footer__detail-lumen-uplift">Bundles</div>
+                        {% endif %}
                     </div>
                     <div>
-                        <div class="site-footer__detail-lumen-thrive">Learn</div>
-                        <div class="site-footer__detail-lumen-uplift">How It Works</div>
-                        <div class="site-footer__detail-lumen-uplift">Results Timeline</div>
-                        <div class="site-footer__detail-lumen-uplift">Blog</div>
-                        <div class="site-footer__detail-lumen-uplift">Reviews</div>
+                        <div class="site-footer__detail-lumen-thrive">{{ section.settings.footer_menu_2_title }}</div>
+                        {% if section.settings.footer_menu_2 != blank %}
+                          {% for link in section.settings.footer_menu_2.links %}
+                            <a href="{{ link.url }}" class="site-footer__detail-lumen-uplift">{{ link.title }}</a>
+                          {% endfor %}
+                        {% else %}
+                          <div class="site-footer__detail-lumen-uplift">How It Works</div>
+                          <div class="site-footer__detail-lumen-uplift">Results Timeline</div>
+                          <div class="site-footer__detail-lumen-uplift">Blog</div>
+                          <div class="site-footer__detail-lumen-uplift">Reviews</div>
+                        {% endif %}
                     </div>
                     <div>
-                        <div class="site-footer__detail-lumen-thrive">Support</div>
-                        <div class="site-footer__detail-lumen-uplift">Questions</div>
-                        <div class="site-footer__detail-lumen-uplift">Returns</div>
-                        <div class="site-footer__detail-lumen-uplift">Guarantee</div>
-                        <div class="site-footer__detail-lumen-uplift">Contact</div>
+                        <div class="site-footer__detail-lumen-thrive">{{ section.settings.footer_menu_3_title }}</div>
+                        {% if section.settings.footer_menu_3 != blank %}
+                          {% for link in section.settings.footer_menu_3.links %}
+                            <a href="{{ link.url }}" class="site-footer__detail-lumen-uplift">{{ link.title }}</a>
+                          {% endfor %}
+                        {% else %}
+                          <div class="site-footer__detail-lumen-uplift">Questions</div>
+                          <div class="site-footer__detail-lumen-uplift">Returns</div>
+                          <div class="site-footer__detail-lumen-uplift">Guarantee</div>
+                          <div class="site-footer__detail-lumen-uplift">Contact</div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -54,9 +72,15 @@
     {"type":"range","id":"padding_top","label":"Padding top","min":0,"max":120,"step":4,"unit":"px","default":0},
     {"type":"range","id":"padding_bottom","label":"Padding bottom","min":0,"max":120,"step":4,"unit":"px","default":0},
     {"type":"image_picker","id":"section_image","label":"Section image (optional)"},
-    {"type":"image_picker","id":"section_image_mobile","label":"Section image mobile (optional)"}
-    ,{"type":"liquid","id":"custom_html","label":"Custom section HTML (advanced)"}
-    ,{"type":"liquid","id":"custom_svg","label":"Custom SVG/HTML snippet (advanced)"}
+    {"type":"image_picker","id":"section_image_mobile","label":"Section image mobile (optional)"},
+    {"type":"text","id":"footer_menu_1_title","label":"Footer column 1 title","default":"Shop"},
+    {"type":"link_list","id":"footer_menu_1","label":"Footer column 1 menu"},
+    {"type":"text","id":"footer_menu_2_title","label":"Footer column 2 title","default":"Learn"},
+    {"type":"link_list","id":"footer_menu_2","label":"Footer column 2 menu"},
+    {"type":"text","id":"footer_menu_3_title","label":"Footer column 3 title","default":"Support"},
+    {"type":"link_list","id":"footer_menu_3","label":"Footer column 3 menu"},
+    {"type":"liquid","id":"custom_html","label":"Custom section HTML (advanced)"},
+    {"type":"liquid","id":"custom_svg","label":"Custom SVG/HTML snippet (advanced)"}
   ],
   "presets":[{"name":"SE Footer"}]
 }
