@@ -141,7 +141,7 @@
 
   function patchConvertedContent(scope = root) {
     scope.querySelectorAll('.water-science__fact-drift-harbor,.science-mobile__fact-crest-harbor').forEach((el) => {
-      el.innerHTML = 'Subtraction,<br>Not Addition.';
+      el.innerHTML = 'DOUBLE,<br>WHAMMY.';
     });
 
     scope.querySelectorAll('span').forEach((span) => {
