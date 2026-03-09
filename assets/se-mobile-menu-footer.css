@@ -19,6 +19,8 @@
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
+    justify-content: center;
+    width: 100%;
     gap: 1.6rem;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -32,6 +34,7 @@
   }
 
   .se-home-mobile-only .site-footer__detail-lumen-uplift a {
+    text-align: center;
     white-space: nowrap;
   }
 }
