@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="{{ 'se-mobile-menu-footer.css' | asset_url }}" media="print" onload="this.media='all'">
 {% style %}#shopify-section-{{ section.id }}{background:{{ section.settings.bg }};color:{{ section.settings.text }};padding-top:{{ section.settings.padding_top }}px;padding-bottom:{{ section.settings.padding_bottom }}px}{% endstyle %}
 {% if section.settings.custom_html != blank %}
   {{ section.settings.custom_html }}
@@ -38,22 +39,7 @@
 
                 <div class="site-footer__detail-lumen-solace">
 
-  {% if request.device_type == 'mobile' and has_mobile_footer_links %}
-    <div>
-      {% for block in section.blocks %}
-        {% if block.type == 'mobile_footer_link' %}
-          <div class="site-footer__detail-lumen-uplift" {{ block.shopify_attributes }}>
-            <a href="{{ block.settings.mobile_footer_link }}">
-              {% if block.settings.mobile_footer_icon != blank %}
-                {{ block.settings.mobile_footer_icon | image_url: width: 24 | image_tag: loading: 'lazy', alt: block.settings.mobile_footer_title }}
-              {% endif %}
-              {{ block.settings.mobile_footer_title }}
-            </a>
-          </div>
-        {% endif %}
-      {% endfor %}
-    </div>
-  {% else %}
+  <div class="se-home-desktop-tablet-only">
     {% for block in section.blocks %}
       {% if block.type == 'footer_column' %}
         <div {{ block.shopify_attributes }}>
@@ -84,7 +70,57 @@
         </div>
       {% endif %}
     {% endfor %}
-  {% endif %}
+  </div>
+
+  <div class="se-home-mobile-only">
+    {% if has_mobile_footer_links %}
+      <div>
+        {% for block in section.blocks %}
+          {% if block.type == 'mobile_footer_link' %}
+            <div class="site-footer__detail-lumen-uplift" {{ block.shopify_attributes }}>
+              <a href="{{ block.settings.mobile_footer_link }}">
+                {% if block.settings.mobile_footer_icon != blank %}
+                  {{ block.settings.mobile_footer_icon | image_url: width: 24 | image_tag: loading: 'lazy', alt: block.settings.mobile_footer_title }}
+                {% endif %}
+                {{ block.settings.mobile_footer_title }}
+              </a>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% else %}
+      {% for block in section.blocks %}
+        {% if block.type == 'footer_column' %}
+          <div {{ block.shopify_attributes }}>
+
+            {% if block.settings.column_title != blank %}
+              <div class="site-footer__detail-lumen-thrive">
+                {{ block.settings.column_title }}
+              </div>
+            {% endif %}
+
+            {% for i in (1..4) %}
+              {% assign item_text = 'item_text_' | append: i %}
+              {% assign item_link = 'item_link_' | append: i %}
+
+              {% if block.settings[item_text] != blank %}
+                <div class="site-footer__detail-lumen-uplift">
+                  {% if block.settings[item_link] != blank %}
+                    <a href="{{ block.settings[item_link] }}">
+                      {{ block.settings[item_text] }}
+                    </a>
+                  {% else %}
+                    {{ block.settings[item_text] }}
+                  {% endif %}
+                </div>
+              {% endif %}
+            {% endfor %}
+
+          </div>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  </div>
 
 </div>
             </div>

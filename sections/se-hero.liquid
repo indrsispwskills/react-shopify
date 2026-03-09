@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="{{ 'se-mobile-menu-footer.css' | asset_url }}" media="print" onload="this.media='all'">
 {% if section.settings.custom_html != blank %}
   {{ section.settings.custom_html }}
 {% else %}
@@ -32,7 +33,7 @@
         <div class="mob-overlay"></div>
         <aside class="mob-menu" aria-label="Mobile navigation">
             <button class="mob-close" aria-label="Close menu" type="button">×</button>
-            {% if request.device_type == 'mobile' and has_mobile_header_menu %}
+            {% if has_mobile_header_menu %}
               {% for block in section.blocks %}
                 {% if block.type == 'mobile_header_menu' %}
                   <a href="{{ block.settings.mobile_menu_link }}">
