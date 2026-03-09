@@ -1,8 +1,17 @@
+<link rel="stylesheet" href="{{ 'se-mobile-menu-footer.css' | asset_url }}" media="print" onload="this.media='all'">
 {% style %}#shopify-section-{{ section.id }}{background:{{ section.settings.bg }};color:{{ section.settings.text }};padding-top:{{ section.settings.padding_top }}px;padding-bottom:{{ section.settings.padding_bottom }}px}{% endstyle %}
 {% if section.settings.custom_html != blank %}
   {{ section.settings.custom_html }}
 {% else %}
 {% if section.settings.custom_svg != blank %}<div class="se-custom-svg">{{ section.settings.custom_svg }}</div>{% endif %}
+{% liquid
+  assign has_mobile_footer_links = false
+  for block in section.blocks
+    if block.type == 'mobile_footer_link'
+      assign has_mobile_footer_links = true
+    endif
+  endfor
+%}
         <footer class="site-footer__detail-lumen-meadow">
             <div class="site-footer__detail-lumen-nova">
                 <div class="site-footer__detail-lumen-oasis">
@@ -26,38 +35,92 @@
 {% endif %}
                 </div>
 
-                
+
 
                 <div class="site-footer__detail-lumen-solace">
 
-  {% for block in section.blocks %}
-    <div {{ block.shopify_attributes }}>
-      
-      {% if block.settings.column_title != blank %}
-        <div class="site-footer__detail-lumen-thrive">
-          {{ block.settings.column_title }}
+  <div class="se-home-desktop-tablet-only">
+    {% for block in section.blocks %}
+      {% if block.type == 'footer_column' %}
+        <div {{ block.shopify_attributes }}>
+
+          {% if block.settings.column_title != blank %}
+            <div class="site-footer__detail-lumen-thrive">
+              {{ block.settings.column_title }}
+            </div>
+          {% endif %}
+
+          {% for i in (1..4) %}
+            {% assign item_text = 'item_text_' | append: i %}
+            {% assign item_link = 'item_link_' | append: i %}
+
+            {% if block.settings[item_text] != blank %}
+              <div class="site-footer__detail-lumen-uplift">
+                {% if block.settings[item_link] != blank %}
+                  <a href="{{ block.settings[item_link] }}">
+                    {{ block.settings[item_text] }}
+                  </a>
+                {% else %}
+                  {{ block.settings[item_text] }}
+                {% endif %}
+              </div>
+            {% endif %}
+          {% endfor %}
+
         </div>
       {% endif %}
+    {% endfor %}
+  </div>
 
-      {% for i in (1..4) %}
-        {% assign item_text = 'item_text_' | append: i %}
-        {% assign item_link = 'item_link_' | append: i %}
-
-        {% if block.settings[item_text] != blank %}
-          <div class="site-footer__detail-lumen-uplift">
-            {% if block.settings[item_link] != blank %}
-              <a href="{{ block.settings[item_link] }}">
-                {{ block.settings[item_text] }}
+  <div class="se-home-mobile-only">
+    {% if has_mobile_footer_links %}
+      <div>
+        {% for block in section.blocks %}
+          {% if block.type == 'mobile_footer_link' %}
+            <div class="site-footer__detail-lumen-uplift" {{ block.shopify_attributes }}>
+              <a href="{{ block.settings.mobile_footer_link }}">
+                {% if block.settings.mobile_footer_icon != blank %}
+                  {{ block.settings.mobile_footer_icon | image_url: width: 24 | image_tag: loading: 'lazy', alt: block.settings.mobile_footer_title }}
+                {% endif %}
+                {{ block.settings.mobile_footer_title }}
               </a>
-            {% else %}
-              {{ block.settings[item_text] }}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% else %}
+      {% for block in section.blocks %}
+        {% if block.type == 'footer_column' %}
+          <div {{ block.shopify_attributes }}>
+
+            {% if block.settings.column_title != blank %}
+              <div class="site-footer__detail-lumen-thrive">
+                {{ block.settings.column_title }}
+              </div>
             {% endif %}
+
+            {% for i in (1..4) %}
+              {% assign item_text = 'item_text_' | append: i %}
+              {% assign item_link = 'item_link_' | append: i %}
+
+              {% if block.settings[item_text] != blank %}
+                <div class="site-footer__detail-lumen-uplift">
+                  {% if block.settings[item_link] != blank %}
+                    <a href="{{ block.settings[item_link] }}">
+                      {{ block.settings[item_text] }}
+                    </a>
+                  {% else %}
+                    {{ block.settings[item_text] }}
+                  {% endif %}
+                </div>
+              {% endif %}
+            {% endfor %}
+
           </div>
         {% endif %}
       {% endfor %}
-
-    </div>
-  {% endfor %}
+    {% endif %}
+  </div>
 
 </div>
             </div>
@@ -69,14 +132,14 @@
   {% endif %}
 
   {% if section.settings.legal_text_2 != blank %}
-    · 
+    ·
     <a href="{{ section.settings.legal_link_2 }}">
       {{ section.settings.legal_text_2 }}
     </a>
   {% endif %}
 
   {% if section.settings.legal_text_3 != blank %}
-    · 
+    ·
     <a href="{{ section.settings.legal_link_3 }}">
       {{ section.settings.legal_text_3 }}
     </a>
@@ -88,7 +151,7 @@
 {% endif %}
 
 
-  
+
 {% schema %}
 {
   "name": "SE Footer",
@@ -223,10 +286,31 @@
           "label": "Item 4 Link"
         }
       ]
+    },
+    {
+      "type": "mobile_footer_link",
+      "name": "Mobile Footer Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "mobile_footer_title",
+          "label": "Mobile footer title"
+        },
+        {
+          "type": "url",
+          "id": "mobile_footer_link",
+          "label": "Mobile footer link"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_footer_icon",
+          "label": "Mobile footer icon (optional)"
+        }
+      ]
     }
   ],
 
-  "max_blocks": 3,
+  "max_blocks": 20,
 
   "presets": [
     {
