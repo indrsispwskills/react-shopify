@@ -29,12 +29,20 @@
     justify-content: center;
     flex: 0 0 20%;
     max-width: 20%;
+    min-width: 0;
     margin: 0;
-    white-space: nowrap;
   }
 
   .se-home-mobile-only .site-footer__detail-lumen-uplift a {
+    display: block;
+    width: 100%;
     text-align: center;
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-decoration: none;
+    color: inherit;
+    pointer-events: none;
+    cursor: default;
   }
 }
