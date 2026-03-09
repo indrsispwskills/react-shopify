@@ -1,7 +1,16 @@
+<link rel="stylesheet" href="{{ 'se-mobile-menu-footer.css' | asset_url }}" media="print" onload="this.media='all'">
 {% if section.settings.custom_html != blank %}
   {{ section.settings.custom_html }}
 {% else %}
 {% if section.settings.custom_svg != blank %}<div class="se-custom-svg">{{ section.settings.custom_svg }}</div>{% endif %}
+{% liquid
+  assign has_mobile_header_menu = false
+  for block in section.blocks
+    if block.type == 'mobile_header_menu'
+      assign has_mobile_header_menu = true
+    endif
+  endfor
+%}
         <nav class="hero__panel-bloom">
             <div class="hero__panel-crest"></div>
             <div>
@@ -24,10 +33,23 @@
         <div class="mob-overlay"></div>
         <aside class="mob-menu" aria-label="Mobile navigation">
             <button class="mob-close" aria-label="Close menu" type="button">×</button>
-            <a href="#science">{{ section.settings.secondary_label }}</a>
-            <a href="#products">Our Products</a>
-            <a href="#results">Real Results</a>
-            <a href="#faq">Common Questions</a>
+            {% if has_mobile_header_menu %}
+              {% for block in section.blocks %}
+                {% if block.type == 'mobile_header_menu' %}
+                  <a href="{{ block.settings.mobile_menu_link }}">
+                    {% if block.settings.mobile_menu_icon != blank %}
+                      {{ block.settings.mobile_menu_icon | image_url: width: 24 | image_tag: loading: 'lazy', alt: block.settings.mobile_menu_title }}
+                    {% endif %}
+                    {{ block.settings.mobile_menu_title }}
+                  </a>
+                {% endif %}
+              {% endfor %}
+            {% else %}
+              <a href="#science">{{ section.settings.secondary_label }}</a>
+              <a href="#products">Our Products</a>
+              <a href="#results">Real Results</a>
+              <a href="#faq">Common Questions</a>
+            {% endif %}
             <a href="#products" class="btn btn-rose" style="margin-top:20px;justify-content:center">{{ section.settings.primary_label }}</a>
         </aside>
         <div class="mob-cta" aria-label="Mobile sticky purchase CTA">
@@ -67,7 +89,7 @@
                     <h1 class="hero-content-reveal hero-main-heading hero__panel-yonder">{{ section.settings.headline }}</h1>
                     <p class="hero-content-reveal hero-support-text hero__panel-aurora-aurora">
                     {{ section.settings.headline_part_1 }}
-                    Chlorine and hard water are 
+                    Chlorine and hard water are
                     <strong class="hero__panel-aurora-bloom">
                     {{ section.settings.headline_highlight }}
                     </strong>
@@ -301,6 +323,29 @@
     {"type":"text","id":"primary_label","label":"Primary button label","default":"Find Your Filter"},
     {"type":"text","id":"secondary_label","label":"Secondary button label","default":"How It Works"},
     {"type":"image_picker","id":"hero_image","label":"Hero image"}
+  ],
+  "blocks": [
+    {
+      "type": "mobile_header_menu",
+      "name": "Mobile Header Menu",
+      "settings": [
+        {
+          "type": "text",
+          "id": "mobile_menu_title",
+          "label": "Mobile menu title"
+        },
+        {
+          "type": "url",
+          "id": "mobile_menu_link",
+          "label": "Mobile menu link"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_menu_icon",
+          "label": "Mobile menu icon (optional)"
+        }
+      ]
+    }
   ],
   "presets":[{"name":"SE Hero"}]
 }

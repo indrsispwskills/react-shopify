@@ -1,0 +1,17 @@
+.se-home-mobile-only {
+  display: none;
+}
+
+.se-home-desktop-tablet-only {
+  display: block;
+}
+
+@media screen and (max-width: 768px) {
+  .se-home-mobile-only {
+    display: block;
+  }
+
+  .se-home-desktop-tablet-only {
+    display: none;
+  }
+}

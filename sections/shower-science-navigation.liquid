@@ -9,8 +9,8 @@
     <nav class="nav-links" role="navigation" aria-label="Page sections">
   {% for block in section.blocks %}
     {% if block.type == 'desktop_nav' %}
-      <a href="{{ block.settings.link }}" 
-         class="nav-link" 
+      <a href="{{ block.settings.link }}"
+         class="nav-link"
          data-section="{{ block.settings.section }}">
         {{ block.settings.title }}
       </a>
@@ -49,7 +49,7 @@
       {{ block.settings.title }}
     </a>
   {% endif %}
-{% endfor %} 
+{% endfor %}
 </div>
 
 
