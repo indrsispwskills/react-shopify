@@ -1,0 +1,48 @@
+.se-home-mobile-only {
+  display: none;
+}
+
+.se-home-desktop-tablet-only {
+  display: block;
+}
+
+@media screen and (max-width: 768px) {
+  .se-home-mobile-only {
+    display: block;
+  }
+
+  .se-home-desktop-tablet-only {
+    display: none;
+  }
+
+  .se-home-mobile-only > div {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 1.2rem 0;
+  }
+
+  .se-home-mobile-only .site-footer__detail-lumen-uplift {
+    display: inline-flex;
+    justify-content: center;
+    flex: 0 0 20%;
+    max-width: 20%;
+    min-width: 0;
+    margin: 0;
+  }
+
+  .se-home-mobile-only .site-footer__detail-lumen-uplift a {
+    display: block;
+    width: 100%;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-decoration: none;
+    color: inherit;
+    pointer-events: none;
+    cursor: default;
+  }
+}
