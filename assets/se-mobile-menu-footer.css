@@ -37,9 +37,9 @@
     display: block;
     width: 100%;
     text-align: center;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
     text-decoration: none;
     color: inherit;
     pointer-events: none;
