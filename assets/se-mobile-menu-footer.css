@@ -17,18 +17,18 @@
 
   .se-home-mobile-only > div {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     width: 100%;
-    gap: 1.6rem;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+    gap: 1.2rem 0;
   }
 
   .se-home-mobile-only .site-footer__detail-lumen-uplift {
     display: inline-flex;
-    flex: 0 0 auto;
+    justify-content: center;
+    flex: 0 0 20%;
+    max-width: 20%;
     margin: 0;
     white-space: nowrap;
   }
